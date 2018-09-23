@@ -16,7 +16,7 @@ this repository:
 ```sh
 Clone and enter repo:
 $ git https://github.com/thomask156/326_project.git
-$ cd hydroponics
+$ cd 326_project
 ```
 
 ##### Configuring and starting vagrant
