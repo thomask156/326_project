@@ -39,24 +39,24 @@ Create environment:
         tools -> Start SSH session... -> Vagrant at ...
     
 Navigating to the project:
-$ cd /vagrant/src
+$ cd /vagrant
 ```
 
 ##### Install Dependencies
 ```sh
-Install pip:
-$ sudo apt-get install python-pip python3-pip
-
-Create and activate virtual environment:
-$ sudo pip3 install virtualenv
-$ virtualenv -p /usr/bin/python3 venv/
-$ source venv/bin/activate
-
 Update apt-get:
 $ sudo apt-get update
 
+Install pip:
+$ sudo apt-get install python3-pip
+
+Create and activate virtual environment:
+$ sudo pip3 install virtualenv
+$ virtualenv --always-copy .venv
+$ source .venv/bin/activate
+
 Install pip requirements:
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 
 Install node:
 $ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
