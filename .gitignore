@@ -106,3 +106,4 @@ venv.bak/
 # IDE configuration files
 .idea/
 .vagrant/
+node_modules/
