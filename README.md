@@ -17,14 +17,6 @@ this repository:
 Clone and enter repo:
 $ git https://github.com/thomask156/326_project.git
 $ cd hydroponics
-
-Install pip:
-$ sudo apt-get install python-pip python3-pip
-
-Create and activate virtual environment:
-$ sudo pip3 install virtualenv
-$ virtualenv -p /usr/bin/python3 venv/
-$ source venv/bin/activate
 ```
 
 ##### Configuring and starting vagrant
@@ -52,6 +44,14 @@ $ cd /vagrant/src
 
 ##### Install Dependencies
 ```sh
+Install pip:
+$ sudo apt-get install python-pip python3-pip
+
+Create and activate virtual environment:
+$ sudo pip3 install virtualenv
+$ virtualenv -p /usr/bin/python3 venv/
+$ source venv/bin/activate
+
 Update apt-get:
 $ sudo apt-get update
 
