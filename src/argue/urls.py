@@ -15,6 +15,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^api/', include(argue_api_patterns)),
-    #url(r'^home', HomeView, name="home"),
-    #url(r'^error', ErrorView, name="error"),
+    url(r'^home', HomeView, name="home"),
+    url(r'^error', ErrorView, name="error"),
 ]
