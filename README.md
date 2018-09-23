@@ -56,11 +56,13 @@ $ virtualenv --always-copy .venv
 $ source .venv/bin/activate
 
 Install pip requirements:
+$ cd src
 $ pip3 install -r requirements.txt
 
 Install node:
 $ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 $ sudo apt-get install -y nodejs
+$ sudo apt-get install npm
 
 Install gulp globally:
 $ sudo npm install -g gulp
