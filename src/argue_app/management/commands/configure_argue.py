@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from models import *
+from argue_app.models import *
 
 import logging
 from django.utils import timezone
