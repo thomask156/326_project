@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'nested_inline',
     'import_export',
+    'argue_app.apps.ArgueConfig',
 ]
 
 MIDDLEWARE = [
