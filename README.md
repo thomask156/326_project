@@ -10,6 +10,8 @@ this repository:
   requested as part of the submission.
 * `src` - this folder is used for your project code.
 
+### Configuration ###
+
 ##### Clone and Setup Repository
 ```sh
 Clone and enter repo:
