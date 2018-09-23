@@ -15,9 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG_DIR = os.path.join(BASE_DIR, 'logs')
-STATIC_URL = '/static/'
-STATIC_DIR = os.path.join(BASE_DIR, 'logs')
-STATIC_ROOT = BASE_DIR + STATIC_URL
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 ADMINS = [('Preston Sheppard', 'psheppard16@gmail.com')]
 
@@ -30,7 +28,7 @@ SECRET_KEY = 'g+&ioepw0d6m-7h*631j@0eq0eo0%&nb6^g2c6ee3qce$+j1d!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition
