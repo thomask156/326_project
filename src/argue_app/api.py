@@ -1,5 +1,5 @@
 from rest_framework import viewsets, filters, generics, permissions
-from serializers import *
+from argue_app.serializers import *
 
 
 ###########################################################################

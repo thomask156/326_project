@@ -1,8 +1,8 @@
 import os
 from django.conf.urls import include, url
 from rest_framework import routers
-from api import *
-from views import *
+from argue_app.api import *
+from argue_app.views import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIRS = (

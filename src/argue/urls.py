@@ -1,21 +1,20 @@
-"""argue URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path
+import os
+from argue_app.urls import argue_api_patterns
+from argue_app.views import *
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'argue_app'),
+)
+
+handler403 = 'argue.templates.permission_denied_view'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+
+    url(r'^api/', include(argue_api_patterns)),
+    #url(r'^home', HomeView, name="home"),
+    #url(r'^error', ErrorView, name="error"),
 ]

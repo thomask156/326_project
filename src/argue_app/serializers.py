@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers, mixins
 from rest_framework.fields import CurrentUserDefault
 
-from models import *
+from argue_app.models import *
 
 User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):

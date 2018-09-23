@@ -1,9 +1,9 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from models import *
-from forms import *
-from serializers import *
+from argue_app.models import *
+from argue_app.forms import *
+from argue_app.serializers import *
 from django.urls import reverse
 
 import logging

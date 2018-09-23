@@ -1,5 +1,5 @@
 from django import forms
-from models import *
+from argue_app.models import *
 
 # class DataForm(forms.ModelForm):
 #     """Form for data
