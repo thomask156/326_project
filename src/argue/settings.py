@@ -206,4 +206,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-from src.argue.settings_secret import *
+from argue.settings_secret import *

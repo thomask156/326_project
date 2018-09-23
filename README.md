@@ -74,7 +74,7 @@ Create settings_secret.py using template:
 $ cp argue/settings_secret.py.template argue/settings_secret.py
 
 Enter random characters for the 'SECRET_KEY' in `settings_secret.py`:
-SECRET_KEY='super random characters
+SECRET_KEY='super random characters'
 
 Collect static resources for main site:
 $ gulp (`gulp watch` for continuous collection)
