@@ -6,7 +6,7 @@ import logging
 log = logging.getLogger('argue')
 
 class ArgueConfig(AppConfig):
-    name = 'argue'
+    name = 'argue_app'
     verbose_name = 'Argue Application'
 
     def ready(self):
