@@ -1,10 +1,10 @@
 from django.core.management.base import BaseCommand, CommandError
-from hydro.models import *
+from models import *
 
 import logging
 from django.utils import timezone
 
-log = logging.getLogger('hydro')
+log = logging.getLogger('argue')
 
 
 class Command(BaseCommand):
