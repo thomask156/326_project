@@ -91,6 +91,7 @@ $ sudo apt-get install sqlite3
 Make the database:
 $ cd databases
 $ sqlite3 db.sqlite3
+sqlite> .exit
 $ cd ..
 
 Make migrations: 
