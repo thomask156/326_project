@@ -15,7 +15,7 @@ this repository:
 ##### Clone and Setup Repository
 ```sh
 Clone and enter repo:
-$ git https://github.com/thomask156/326_project.git
+$ git clone https://github.com/thomask156/326_project.git
 $ cd 326_project
 ```
 
@@ -66,6 +66,9 @@ $ sudo apt-get install npm
 
 Install gulp globally:
 $ sudo npm install -g gulp
+
+Set node to development mode
+$ sudo npm config set -g production false
 
 Install node requirements:
 $ npm install
