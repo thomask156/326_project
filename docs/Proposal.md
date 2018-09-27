@@ -8,15 +8,15 @@ Team Master Hackers wishes to propose the web application ChangeMyMind.com
 
 Team Master Hackers and their GitHub Names:
 
-Travis Bender ([travisbender](github.com/travisbender))
+Travis Bender ([travisbender](https://github.com/travisbender))
 
-Mark Disler ([markdisler](github.com/markdisler))
+Mark Disler ([markdisler](https://github.com/markdisler))
 
-Thomas Katz ([thomask156](github.com/thomask156))
+Thomas Katz ([thomask156](https://github.com/thomask156))
 
-Preston Sheppard ([psheppard16](github.com/psheppard16))
+Preston Sheppard ([psheppard16](https://github.com/psheppard16))
 
-Seth Tinglof ([seth-tinglof](github.com/seth-tinglof))
+Seth Tinglof ([seth-tinglof](https://github.com/seth-tinglof))
 
 
 
