@@ -20,3 +20,11 @@ argue_api_patterns = [
     url(r'^profile', ProfileView, name="profile"),
     url(r'^error', ErrorView, name="error"),
 ]
+
+urlpatterns = [
+    url(r'^home', HomeView, name="home"),
+    url(r'^chat', ChatView, name="chat"),
+    url(r'^login', LoginView, name="login"),
+    url(r'^profile', ProfileView, name="profile"),
+    url(r'^error', ErrorView, name="error"),
+]
