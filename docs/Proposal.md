@@ -30,7 +30,7 @@ Seth Tinglof ([seth-tinglof](https://github.com/seth-tinglof))
 
 ##  Important Data
 
-​Important data for our web application includes the list of topics users can choose to argue from. This list will start off with topics recommended by us, but users will be able to add their own topics to this list. Personality metrics of our users may be used for matchmaking purposes, to ascertain that our Users have the best conversations possible. People may use images in their argument to further their point, as well as stickers (such as a big red WRONG!) for our User's amusement. To save our user's specific information, usernames and passwords will also be necessary for personalized experiences. In short, the five following types of data are important for our webapp: personality metrics, argument topics, images, usernames and passwords.
+​Important data for our web application includes the list of topics users can choose to argue from. This list will start off with topics recommended by us, but users will be able to add their own topics to this list. Personality metrics of our users may be used for matchmaking purposes, to ascertain that our Users have the best conversations possible. People may use images in their argument to further their point, as well as stickers (such as a big red WRONG!) for our User's amusement. To save our user's specific information, usernames and passwords will also be necessary for personalized experiences. In short, the five following types of data are important for our webapp: chat logs, user rankings, argument topics, images, usernames and passwords. There are extensions that we include to build upon these such as personality metrics.
 
 
 ## Mock UI
