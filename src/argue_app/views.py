@@ -43,6 +43,13 @@ def ProfileView(request):
     return render(request, 'pages/profile.html', context)
 
 
+def LobbyView(request):
+    context = {'title': "Lobby",
+               'user': request.user
+               }
+    return render(request, 'pages/lobby.html', context)
+
+
 def ErrorView(request):
     context = {'title': "Error",
                }

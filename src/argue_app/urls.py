@@ -14,11 +14,6 @@ router = routers.DefaultRouter(trailing_slash=False)
 argue_api_patterns = [
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^home', HomeView, name="home"),
-    url(r'^chat', ChatView, name="chat"),
-    url(r'^login', LoginView, name="login"),
-    url(r'^profile', ProfileView, name="profile"),
-    url(r'^error', ErrorView, name="error"),
 ]
 
 urlpatterns = [
@@ -26,5 +21,6 @@ urlpatterns = [
     url(r'^chat', ChatView, name="chat"),
     url(r'^login', LoginView, name="login"),
     url(r'^profile', ProfileView, name="profile"),
+    url(r'^lobby', LobbyView, name="lobby"),
     url(r'^error', ErrorView, name="error"),
 ]
