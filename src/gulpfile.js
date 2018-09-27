@@ -62,7 +62,7 @@ gulp.task("webpack", ["clean-js", "eol", "eslint", "babel"], () => {
 		.pipe(webpack({
     entry: "./static/js/es5/app.js",
     output:{
-        filename: "timeclock.bundle.js"
+        filename: "argue.bundle.js"
     },
 }))
 		.pipe(gulp.dest("static/dist"));
@@ -76,7 +76,7 @@ gulp.task("sass", () => {
 
 gulp.task("css", ["sass"], () => {
 	// bootstrap
-    gulp.src("node_modules/bootstrap/dist/css/*.min.css")
+    gulp.src("node_modules/bootstrap/dist/css/*.css")
 		.pipe(gulp.dest("static/css/lib"));
 
 	// font-awesome
@@ -102,7 +102,7 @@ gulp.task("css", ["sass"], () => {
     return gulp.src(["static/css/lib/**/*.css"])
       .pipe(autoprefixer())
       .pipe(cleanCSS())
-      .pipe(concat("timeclock.min.css"))
+      .pipe(concat("argue.min.css"))
       .pipe(gulp.dest("static/dist"));
 });
 
