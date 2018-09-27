@@ -16,5 +16,8 @@ urlpatterns = [
 
     url(r'^api/', include(argue_api_patterns)),
     url(r'^home', HomeView, name="home"),
+    url(r'^chat', ChatView, name="chat"),
+    url(r'^login', LoginView, name="login"),
+    url(r'^profile', ProfileView, name="profile"),
     url(r'^error', ErrorView, name="error"),
 ]

@@ -14,11 +14,33 @@ log = logging.getLogger('argue')
 #                                                                         #
 ###########################################################################
 
+
 def HomeView(request):
     context = {'title': "Home",
                'user': request.user
                }
-    return render(request, 'home/home.html', context)
+    return render(request, 'pages/home.html', context)
+
+
+def ChatView(request):
+    context = {'title': "Chat",
+               'user': request.user
+               }
+    return render(request, 'pages/chat.html', context)
+
+
+def LoginView(request):
+    context = {'title': "Login",
+               'user': request.user
+               }
+    return render(request, 'pages/login.html', context)
+
+
+def ProfileView(request):
+    context = {'title': "Profile",
+               'user': request.user
+               }
+    return render(request, 'pages/profile.html', context)
 
 
 def ErrorView(request):
