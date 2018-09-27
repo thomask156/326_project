@@ -1,0 +1,32 @@
+body {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-image: url(/Users/seth/Desktop/school/cs326/326_project/src/assets/img/profile/Background.png)
+}
+
+h3 {
+  margin-top: 2rem;
+}
+
+h2 {
+    color: white
+}
+
+.row {
+  margin-bottom: 1rem;
+}
+.row .row {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+[class*="col-"] {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: rgba(180, 180, 180, .5);
+  border: 1px solid rgba(180, 180, 180, .9);
+}
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
