@@ -35,10 +35,10 @@ Seth Tinglof ([seth-tinglof](https://github.com/seth-tinglof))
 
 ## Mock UI
 
-We designed sketches of what we want our web application to look like as we get deeper into development of this project.  Those sketches were made using Sketch 3 and screenshots are attached below.  Using those sketches, we created several HTML pages which will eventually take on the complete design that we intended.  
-
+We designed sketches of what we want our web application to look like as we get deeper into development of this project.  Those sketches were made using Sketch 3 and screenshots are attached below.  Using those sketches, we created several HTML pages which will eventually take on the complete design that we intended.  The login page accepts user data such as their username and password, as well as email if they are signing up for an account. The dashboard page lists ongoing argument as well as any friends/adversaries who are online. User data here includes get requests to start a new argument. The profile page has user data such as their login information and a profile picture if they would like. A small biography is also currently an option. The new argument page does not itself contain any user data besides input as to what topics they'd like to discuss in.  Chat will contain messages sent to each user.
 
 ![alt text](https://github.com/thomask156/326_project/blob/master/docs/imgs/login.png "Login Screen")
+
 ![alt text](https://github.com/thomask156/326_project/blob/master/docs/imgs/dashboard.png "Main Dashboard")
 ![alt text](https://github.com/thomask156/326_project/blob/master/docs/imgs/profile.png "Profile")
 ![alt text](https://github.com/thomask156/326_project/blob/master/docs/imgs/newtopic.png "New Topic")
