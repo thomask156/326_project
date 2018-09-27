@@ -13,11 +13,6 @@ handler403 = 'argue.templates.permission_denied_view'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
+    url(r'^argue/', include('argue_app.urls')),
     url(r'^api/', include(argue_api_patterns)),
-    url(r'^home', HomeView, name="home"),
-    url(r'^chat', ChatView, name="chat"),
-    url(r'^login', LoginView, name="login"),
-    url(r'^profile', ProfileView, name="profile"),
-    url(r'^error', ErrorView, name="error"),
 ]

@@ -71,7 +71,13 @@ Set node to development mode
 $ sudo npm config set -g production false
 
 Install node requirements:
-$ npm install
+On mac/linux:
+    $ npm install
+On windows:
+    $ npm install --no-bin-links
+    You may need to run:
+    $ nodejs node_modules/node-sass/scripts/install.js
+    $ npm rebuild node-sass --no-bin-links
 
 Create settings_secret.py using template:
 $ cp argue/settings_secret.py.template argue/settings_secret.py
@@ -84,6 +90,11 @@ $ gulp (`gulp watch` for continuous collection)
 
 Collect static resources for admin site:
 $ python manage.py collectstatic
+
+Run the django site:
+source .venv/bin/activate
+cd src
+python3 manage.py runserver 0.0.0.0:8000
 ```
 
 ##### Database Setup
