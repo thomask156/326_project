@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^profile', ProfileView, name="profile"),
     url(r'^lobby', LobbyView, name="lobby"),
     url(r'^error', ErrorView, name="error"),
+    url(r'new_user', NewUserView, name='new_user')
 ]

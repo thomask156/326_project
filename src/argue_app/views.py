@@ -1,5 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 
 from argue_app.models import *
 from argue_app.forms import *
@@ -54,3 +55,11 @@ def ErrorView(request):
     context = {'title': "Error",
                }
     return render(request, 'shared/error.html', context)
+
+
+def NewUserView(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+    return redirect('home')
