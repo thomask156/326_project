@@ -9,8 +9,3 @@ from argue_app.models import *
 #     class Meta:
 #         model = Data
 #         exclude = []
-
-class UserForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password')
