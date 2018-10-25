@@ -19,9 +19,6 @@ argue_api_patterns = [
 urlpatterns = [
     url(r'^home/', HomeView, name="home"),
     url(r'^chat/', ChatView, name="chat"),
-    url(r'^auth/', include('django.contrib.auth.urls'), name="login"),
-    url(r'^profile/', ProfileView, name="profile"),
     url(r'^lobby/', LobbyView, name="lobby"),
     url(r'^error/', ErrorView, name="error"),
-    url(r'new_user/', NewUserView, name='new_user')
 ]

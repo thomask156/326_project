@@ -15,7 +15,7 @@
 
     <div class="row login-box align-items-center justify-content-center">
         <div class="col-6">
-            <form method="post" action="{% url 'new_user'%}" >
+            <form method="post" action="{% url 'sign_up'%}" >
                 {% csrf_token %}
                 <div class="row align-items-start justify-content-start">
                     <div class="col-auto">
@@ -24,12 +24,32 @@
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-auto">
+                        {% if form.username.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ form.username.errors|escape }}</strong>
+                            </div>
+                        {% endif %}
                         <input placeholder="User name" name="username">
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-auto">
-                        <input placeholder="Password" name="password">
+                        {% if form.password1.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ form.password1.errors|escape }}</strong>
+                            </div>
+                        {% endif %}
+                        <input type="password" placeholder="Password" name="password1">
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        {% if form.password2.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{ form.password2.errors|escape }}</strong>
+                            </div>
+                        {% endif %}
+                        <input type="password" placeholder="Retype password" name="password2">
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
@@ -54,7 +74,7 @@
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-auto">
-                        <input placeholder="Password" name="password">
+                        <input type="password" placeholder="Password" name="password">
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">

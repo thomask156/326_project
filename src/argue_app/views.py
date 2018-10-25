@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 
 from argue_app.models import *
 from argue_app.forms import *
@@ -30,11 +31,19 @@ def ChatView(request):
     return render(request, 'pages/chat.html', context)
 
 
-def LoginView(request):
-    context = {'title': "Login",
-               'user': request.user
-               }
-    return render(request, 'pages/login.html', context)
+def SignUpView(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('profile')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/login.html', {'form': form})
 
 
 def ProfileView(request):
@@ -55,11 +64,3 @@ def ErrorView(request):
     context = {'title': "Error",
                }
     return render(request, 'shared/error.html', context)
-
-
-def NewUserView(request):
-    if request.method == "POST":
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-    return redirect('home')
