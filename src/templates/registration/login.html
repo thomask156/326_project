@@ -1,0 +1,73 @@
+<!doctype html>
+{% load static %}
+<html>
+<head>
+    <title> {{ title }} - Argue </title>
+
+    {# load the icons, styles, and scripts from head #}
+    {% include "shared/head.html" %}
+    <link rel="stylesheet" href="{%static 'css/login.css' %}">
+</head>
+
+<body class="bg-info">
+<div class="container">
+    <h1>Change My Mind</h1>
+
+    <div class="row login-box align-items-center justify-content-center">
+        <div class="col-6">
+            <form method="post" action="{% url 'new_user'%}" >
+                {% csrf_token %}
+                <div class="row align-items-start justify-content-start">
+                    <div class="col-auto">
+                        <h3 class="text-left">Sign Up</h3>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <input placeholder="User name" name="username">
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <input placeholder="Password" name="password">
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <button class="btn" type="submit">Start Arguing!</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-6">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="row align-items-start justify-content-start">
+                    <div class="col-auto">
+                        <h3 class="text-left">Login</h3>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <input placeholder="User name" name="username">
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <input placeholder="Password" name="password">
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <button class="btn">Continue Arguing!</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+
+
+</body>
+</html>
