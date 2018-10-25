@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^chat/', ChatView, name="chat"),
     url(r'^lobby/', LobbyView, name="lobby"),
     url(r'^error/', ErrorView, name="error"),
+    url(r'create_lobby', LobbyCreateView,name='create_lobby')
 ]

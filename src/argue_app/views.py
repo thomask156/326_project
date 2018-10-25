@@ -64,3 +64,9 @@ def ErrorView(request):
     context = {'title': "Error",
                }
     return render(request, 'shared/error.html', context)
+
+
+def LobbyCreateView(request):
+    contex = {'title': "Create Lobby",
+              }
+    return render(request, 'pages/create_lobby.html', contex)
