@@ -43,15 +43,18 @@ def SignUpView(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
 
-            names = ["Alpaca", "Cat", "Cattle", "Chicken", "Dog", "Donkey", "Ferret",
-                     "Gayal", "Goldfish", "Guppy", "Horse", "Koi", "Llama", "Sheep", "Yak"
+            names = ["Alpaca", "Cat", "Cattle",
+                     "Chicken", "Dog", "Donkey",
+                     "Ferret", "Gayal", "Goldfish",
+                     "Guppy", "Horse", "Koi", "Llama",
+                     "Sheep", "Yak"
             ]
 
             user.first_name = "Anonymous"
             user.last_name = random.choice(names)
             user.save()
 
-            profile = Profile(bio = "", rank = 0, user = user)
+            profile = Profile(bio = "Lorem ipsum, people", rank = 0, user = user)
             profile.save()
 
             login(request, user)
@@ -65,7 +68,6 @@ def ProfileView(request):
 
     profile = Profile.objects.get(user=request.user)
     my_args = profile.lobby_set.all().values_list('argument', flat=True)
-
 
     context = {'title'    : "Profile",
                'user'     : request.user,
