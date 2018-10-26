@@ -16,36 +16,32 @@
     <div class="row align-items-center justify-content-center">
 
         <div class="card card-body col-6">
-            <form>
+            <form method="post" action="{% url 'create_lobby'%}">
+                {% csrf_token %}
                   <h1>Start an Argument</h1>
                 <label for="formLobbyName">Lobby Name</label>
                 <input class="form-control" placeholder="Ex. PC's are better than Mac." id="formLobbyName">
                 <label for="formLobbyTopic">Topic</label>
-                <select class="form-control" id="formLobbyTopic">
-                    <option>Any</option>
+                <select name="topic_name" class="form-control" id="formLobbyTopic">
                     {% for topic in  topics%}
-                        <option>{{ topic.topic_name }}</option>
+                        <option value="{{ topic.id }}">{{ topic.topic_name }}</option>
                     {% endfor %}
                 </select>
                 <label for="formLobbySize">Max Size</label>
-                <select class="form-control" id="formLobbySize">
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
+                <select name="max_participants" class="form-control" id="formLobbySize">
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
                 </select>
                 <label for="formLobbyDescription">Description</label>
-                <textarea class="form-control" placeholder="Ex. The eternal debate. It ends today." rows="3" id="formLobbyDescription"></textarea>
-            </form>
+                <textarea name="description" class="form-control" placeholder="Ex. The eternal debate. It ends today." rows="3" id="formLobbyDescription"></textarea>
 
             <div class="row align-items-center justify-content-center top-buffer">
                 <div class="col-auto">
                     <button class="btn">Start Arguing!</button>
                 </div>
             </div>
+            </form>
 
         </div>
     </div>

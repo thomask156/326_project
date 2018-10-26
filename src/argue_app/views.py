@@ -9,6 +9,7 @@ from argue_app.serializers import *
 from django.urls import reverse
 
 import logging
+import datetime
 log = logging.getLogger('argue')
 
 ###########################################################################
@@ -70,4 +71,14 @@ def LobbyCreateView(request):
     contex = {'title': "Create Lobby",
               'topics': Topic.objects.all()
               }
+    if request.method == "POST":
+        lobby_form = CreateLobbyForm(request.POST)
+        argue_form = CreateArgumentForm(request.POST)
+        if lobby_form.is_valid() and argue_form.is_valid():
+            lobby = lobby_form.save(commit=False)
+            argument = argue_form.save(commit=False)
+            argument.last_updated = datetime.datetime.now()
+            argument.save()
+            lobby.argument = argument
+            lobby.save()
     return render(request, 'pages/create_lobby.html', contex)

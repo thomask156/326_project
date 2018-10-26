@@ -22,13 +22,13 @@ class Topic(models.Model):
 
 
 class Argument(models.Model):
-    last_date = models.DateField(null=True, blank=True)
+    last_updated = models.DateField(null=True, blank=True)
     status = models.CharField(max_length=200, default="Ongoing")
     topic_name = models.ForeignKey(Topic, on_delete=models.CASCADE, default="")
     description = models.CharField(max_length=400, default="")
 
 
 class Lobby(models.Model):
-    arguement = models.ForeignKey(Argument, on_delete=models.CASCADE)
+    argument = models.ForeignKey(Argument, on_delete=models.CASCADE)
     max_participants = models.IntegerField()
     participants = models.ManyToManyField(Profile)
