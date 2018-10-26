@@ -16,15 +16,19 @@ class Profile(models.Model):
     # class meta:
     #     abstract = True
 
-class Argument(models.Model):
-    opponent = models.CharField(max_length=200)
-    last_date = models.DateField(null=True, blank=True)
-    outcome = models.CharField(max_length=200)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-
 
 class Topic(models.Model):
     topic_name = models.CharField(max_length=50)
 
 
+class Argument(models.Model):
+    last_date = models.DateField(null=True, blank=True)
+    status = models.CharField(max_length=200, default="Ongoing")
+    topic_name = models.ForeignKey(Topic, on_delete=models.CASCADE, default="")
+    description = models.CharField(max_length=400, default="")
 
+
+class Lobby(models.Model):
+    arguement = models.ForeignKey(Argument, on_delete=models.CASCADE)
+    max_participants = models.IntegerField()
+    participants = models.ManyToManyField(Profile)
