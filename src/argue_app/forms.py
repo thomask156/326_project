@@ -9,3 +9,8 @@ from argue_app.models import *
 #     class Meta:
 #         model = Data
 #         exclude = []
+
+class ChatMessageForm(forms.ModelForm):
+    class Meta:
+        model = ChatMessage
+        fields = ['message']

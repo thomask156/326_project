@@ -11,20 +11,40 @@
 
 <body>
 <div class="chatbox">
-<div class="chatlogs">
-    <div class="chat friend">
-        <div class="user-photo"><img src="../../assets/img/fedora.png"></div>
-        <p class="chat-message"> What's up, Bro</p>
+    <div class="chatlogs">
+        <!--<div class="chat friend">-->
+        <!--<div class="user-photo"><img src="../../assets/img/fedora.png"></div>-->
+        <!--<p class="chat-message"> What's up, Bro</p>-->
+        <!--</div>-->
+        <!--<div class="chat user">-->
+        <!--<div class="user-photo"><img src="../../assets/img/jesus.png"></div>-->
+        <!--<p class="chat-message"> Not much, I want to die</p>-->
+        <!--</div>-->
+        <ul>
+            {% for message in messages %}
+            <div class="message">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </ul>
+
+
     </div>
-    <div class="chat user">
-        <div class="user-photo"><img src="../../assets/img/jesus.png"></div>
-        <p class="chat-message"> Not much, I want to die</p>
-    </div>
-</div>
     <div class="chat-form">
-        <textarea></textarea>
-        <button>Send</button>
+        <form method="post" action="{% url 'chat' %}">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-auto">
+                    <input type="message" placeholder="Enter Message Here" name="message">
+                </div>
+            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="col-auto">
+                    <button class="btn">Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 </body>
+
 </html>

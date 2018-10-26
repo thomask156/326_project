@@ -29,7 +29,7 @@
     </a>
 
     <span class="nameFont">
-      <b> Mark </b> Disler
+      <b> {{ user.first_name }} </b> {{ user.last_name }}
       <img class="trophy" src="../../assets/img/profile/RedTrophy.png" align="top">
       <img class="trophy" src="../../assets/img/profile/GreenTrophy.png" align="top">
     </span>
@@ -37,7 +37,7 @@
     <br>
 
     <p class="descriptionFont" style="width:1000px;">
-        20. Student. iOS Developer. Master arguer.
+        {{ profile.bio }}
     </p>
 
     <br>
@@ -55,25 +55,21 @@
 
     <table>
         <tr>
-            <th> Arguers</th>
+            <th> Topic Name </th>
             <th> Date</th>
-            <th> Outcome</th>
+            <th> Status </th>
         </tr>
+
+        {% for arg in arguments %}
+
         <tr>
-            <td> "Mark" vs. "The Meme"</td>
-            <td> Sept 20, 2018</td>
-            <td class="red"> Inconclusive</td>
+            <td> {{ arg.topic_name }}</td>
+            <td> {{ arg.last_date }}</td>
+            <td class="green"> {{ arg.status }}</td>
         </tr>
-        <tr>
-            <td> "Mark" vs. "Preston"</td>
-            <td> Sept 20, 2018</td>
-            <td class="yellow"> Resigned</td>
-        </tr>
-        <tr>
-            <td> "Mark" vs. "Thomas"</td>
-            <td> Sept 20, 2018</td>
-            <td class="green"> Won</td>
-        </tr>
+
+        {% endfor %}
+
     </table>
 
 </div>

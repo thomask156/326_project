@@ -7,8 +7,13 @@ from argue_app.models import *
 from argue_app.forms import *
 from argue_app.serializers import *
 from django.urls import reverse
-
+import datetime
 import logging
+
+from argue_app.forms import ChatMessageForm
+import random
+
+
 log = logging.getLogger('argue')
 
 ###########################################################################
@@ -26,8 +31,22 @@ def HomeView(request):
 
 def ChatView(request):
     context = {'title': "Chat",
-               'user': request.user
+               'user': request.user,
                }
+    if request.method == 'POST':
+        form = ChatMessageForm(request.POST)
+        if form.is_valid():
+            chat_message = form.save(commit=False)
+            chat_message.profile = request.user
+            chat_message.timestamp = datetime.datetime.now()
+            chat_message.message = form.cleaned_data.get('message')
+            chat_message.save()
+            return redirect('chat')
+    if request.method == 'GET':
+        # get all messages, return them as a list
+        messages = ChatMessageForm.objects.all() #get this fromt he model
+        context["messages"] = messages
+        return render(request, 'pages/chat.html', context)
     return render(request, 'pages/chat.html', context)
 
 
@@ -39,6 +58,21 @@ def SignUpView(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
+
+            names = ["Alpaca", "Cat", "Cattle",
+                     "Chicken", "Dog", "Donkey",
+                     "Ferret", "Gayal", "Goldfish",
+                     "Guppy", "Horse", "Koi", "Llama",
+                     "Sheep", "Yak"
+            ]
+
+            user.first_name = "Anonymous"
+            user.last_name = random.choice(names)
+            user.save()
+
+            profile = Profile(bio = "Lorem ipsum, people", rank = 0, user = user)
+            profile.save()
+
             login(request, user)
             return redirect('profile')
     else:
@@ -47,8 +81,14 @@ def SignUpView(request):
 
 
 def ProfileView(request):
-    context = {'title': "Profile",
-               'user': request.user
+
+    profile = Profile.objects.get(user=request.user)
+    my_args = profile.lobby_set.all().values_list('argument', flat=True)
+
+    context = {'title'    : "Profile",
+               'user'     : request.user,
+               'profile'  : profile,
+               'arguments': my_args
                }
     return render(request, 'pages/profile.html', context)
 
