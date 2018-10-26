@@ -23,4 +23,8 @@ class Argument(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
 
+class Topic(models.Model):
+    topic_name = models.CharField(max_length=50)
+
+
 

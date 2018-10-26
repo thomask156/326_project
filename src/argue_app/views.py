@@ -68,5 +68,6 @@ def ErrorView(request):
 
 def LobbyCreateView(request):
     contex = {'title': "Create Lobby",
+              'topics': Topic.objects.all()
               }
     return render(request, 'pages/create_lobby.html', contex)

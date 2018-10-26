@@ -23,11 +23,9 @@
                 <label for="formLobbyTopic">Topic</label>
                 <select class="form-control" id="formLobbyTopic">
                     <option>Any</option>
-                    <option>Electronics</option>
-                    <option>Fashion</option>
-                    <option>Politics</option>
-                    <option>Animal Fights</option>
-                    <option>Games</option>
+                    {% for topic in  topics%}
+                        <option>{{ topic.topic_name }}</option>
+                    {% endfor %}
                 </select>
                 <label for="formLobbySize">Max Size</label>
                 <select class="form-control" id="formLobbySize">

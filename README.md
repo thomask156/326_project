@@ -89,7 +89,7 @@ Collect static resources for main site:
 $ gulp (`gulp watch` for continuous collection)
 
 Collect static resources for admin site:
-$ python manage.py collectstatic
+$ sudo python manage.py collectstatic
 
 Run the django site:
 source .venv/bin/activate

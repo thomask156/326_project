@@ -10,3 +10,5 @@ from import_export.admin import ImportExportModelAdmin, ImportExportActionModelA
 # 	readonly_fields = ()
 # 	list_filter = []
 # admin.site.register(Data, DataAdmin)
+
+admin.site.register(Topic)
