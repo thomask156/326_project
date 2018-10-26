@@ -34,7 +34,7 @@ class Lobby(models.Model):
     argument = models.ForeignKey(Argument, on_delete=models.CASCADE)
     max_participants = models.IntegerField()
     participants = models.ManyToManyField(Profile)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
 
 class ChatMessage(models.Model):
     profile = models.CharField(max_length=30)
