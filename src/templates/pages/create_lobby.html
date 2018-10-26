@@ -1,0 +1,56 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title> {{ title }} - Argue </title>
+
+    {# load the icons, styles, and scripts from head #}
+    {% include "shared/head.html" %}
+    <link rel="stylesheet" href="{%static 'css/lobby.css' %}">
+  </head>
+
+  <body class="bg-info">
+  <div class="container">
+
+
+    <div class="row align-items-center justify-content-center">
+
+        <div class="card card-body col-6">
+            <form>
+                  <h1>Start an Argument</h1>
+                <label for="formLobbyName">Lobby Name</label>
+                <input class="form-control" placeholder="Ex. PC's are better than Mac." id="formLobbyName">
+                <label for="formLobbyTopic">Topic</label>
+                <select class="form-control" id="formLobbyTopic">
+                    <option>Any</option>
+                    <option>Electronics</option>
+                    <option>Fashion</option>
+                    <option>Politics</option>
+                    <option>Animal Fights</option>
+                    <option>Games</option>
+                </select>
+                <label for="formLobbySize">Max Size</label>
+                <select class="form-control" id="formLobbySize">
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                </select>
+                <label for="formLobbyDescription">Description</label>
+                <textarea class="form-control" placeholder="Ex. The eternal debate. It ends today." rows="3" id="formLobbyDescription"></textarea>
+            </form>
+
+            <div class="row align-items-center justify-content-center top-buffer">
+                <div class="col-auto">
+                    <button class="btn">Start Arguing!</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  </div>
+  </body>
+</html>
