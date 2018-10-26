@@ -29,6 +29,6 @@ class Argument(models.Model):
 
 
 class Lobby(models.Model):
-    arguement = models.ForeignKey(Argument, on_delete=models.CASCADE)
+    argument = models.ForeignKey(Argument, on_delete=models.CASCADE)
     max_participants = models.IntegerField()
     participants = models.ManyToManyField(Profile)
