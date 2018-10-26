@@ -21,3 +21,9 @@ class CreateArgumentForm(forms.ModelForm):
     class Meta:
         model = Argument
         fields = ['topic_name', 'description']
+
+
+class ChatMessageForm(forms.ModelForm):
+    class Meta:
+        model = ChatMessage
+        fields = ['message']
