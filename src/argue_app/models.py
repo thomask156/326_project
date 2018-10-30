@@ -24,9 +24,10 @@ class Topic(models.Model):
 
 
 class Argument(models.Model):
+    argument_name = models.CharField(max_length=200, default='')
     last_updated = models.DateField(null=True, blank=True)
     status = models.CharField(max_length=200, default="Ongoing")
-    topic_name = models.ForeignKey(Topic, on_delete=models.CASCADE, default="")
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, default="")
     description = models.CharField(max_length=400, default="")
 
 

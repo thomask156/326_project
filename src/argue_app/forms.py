@@ -20,7 +20,7 @@ class CreateLobbyForm(forms.ModelForm):
 class CreateArgumentForm(forms.ModelForm):
     class Meta:
         model = Argument
-        fields = ['topic_name', 'description']
+        fields = ['topic', 'description', 'argument_name']
 
 
 class ChatMessageForm(forms.ModelForm):

@@ -20,9 +20,9 @@
                 {% csrf_token %}
                   <h1>Start an Argument</h1>
                 <label for="formLobbyName">Lobby Name</label>
-                <input class="form-control" placeholder="Ex. PC's are better than Mac." id="formLobbyName">
+                <input name="argument_name" class="form-control" placeholder="Ex. PC's are better than Mac." id="formLobbyName">
                 <label for="formLobbyTopic">Topic</label>
-                <select name="topic_name" class="form-control" id="formLobbyTopic">
+                <select name="topic" class="form-control" id="formLobbyTopic">
                     {% for topic in  topics%}
                         <option value="{{ topic.id }}">{{ topic.topic_name }}</option>
                     {% endfor %}
