@@ -44,7 +44,7 @@ def ChatView(request):
             return redirect('chat')
     if request.method == 'GET':
         # get all messages, return them as a list
-        messages = ChatMessage.objects.all() #get this fromt he model
+        messages = ChatMessage.objects.all() #get this from the model
         context["messages"] = messages
         return render(request, 'pages/chat.html', context)
     return render(request, 'pages/chat.html', context)
@@ -94,8 +94,16 @@ def ProfileView(request):
 
 
 def LobbyView(request):
+
+    lobby_tuples = []
+    lobbies = Lobby.objects.all()
+    for lobby in lobbies:
+        lobby_tuples.append({"lobby" : lobby,
+                         'count' : lobby.participants.count()})
+
     context = {'title': "Lobby",
-               'user': request.user
+               'user': request.user,
+               'lobbies': lobby_tuples
                }
     return render(request, 'pages/lobby.html', context)
 
