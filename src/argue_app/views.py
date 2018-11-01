@@ -93,7 +93,7 @@ def ProfileView(request):
     return render(request, 'pages/profile.html', context)
 
 
-def LobbyView(request):
+def LobbyListView(request):
 
     lobby_tuples = []
     lobbies = Lobby.objects.all()
@@ -101,11 +101,11 @@ def LobbyView(request):
         lobby_tuples.append({"lobby" : lobby,
                          'count' : lobby.participants.count()})
 
-    context = {'title': "Lobby",
+    context = {'title': "Lobby List",
                'user': request.user,
                'lobbies': lobby_tuples
                }
-    return render(request, 'pages/lobby.html', context)
+    return render(request, 'pages/lobby_list.html', context)
 
 
 def ErrorView(request):
