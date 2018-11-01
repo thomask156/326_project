@@ -44,7 +44,7 @@ def ChatView(request):
             return redirect('chat')
     if request.method == 'GET':
         # get all messages, return them as a list
-        messages = ChatMessageForm.objects.all() #get this fromt he model
+        messages = ChatMessage.objects.all() #get this fromt he model
         context["messages"] = messages
         return render(request, 'pages/chat.html', context)
     return render(request, 'pages/chat.html', context)
