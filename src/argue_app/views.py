@@ -101,7 +101,6 @@ def LobbyView(request):
         lobby_tuples.append({"lobby" : lobby,
                          'count' : lobby.participants.count()})
 
-    print(lobby_tuples)
     context = {'title': "Lobby",
                'user': request.user,
                'lobbies': lobby_tuples
