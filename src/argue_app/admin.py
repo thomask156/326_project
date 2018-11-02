@@ -14,3 +14,4 @@ from import_export.admin import ImportExportModelAdmin, ImportExportActionModelA
 admin.site.register(Topic)
 admin.site.register(Argument)
 admin.site.register(Profile)
+admin.site.register(Status)
