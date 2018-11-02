@@ -17,5 +17,5 @@ urlpatterns = [
     url(r'^api/', include(argue_api_patterns)),
     url(r'^auth/', include('django.contrib.auth.urls'), name="auth"),
     url(r'^auth/sign_up', SignUpView, name="sign_up"),
-    url(r'^auth/profile', ProfileView, name="profile"),
+
 ]

@@ -191,7 +191,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL = '/auth/profile'
+LOGIN_REDIRECT_URL = '/argue/profile'
 
 
 # Internationalization
