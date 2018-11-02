@@ -94,16 +94,15 @@ def ProfileView(request):
 
 
 def LobbyListView(request):
-
-    lobby_tuples = []
-    lobbies = Lobby.objects.all()
-    for lobby in lobbies:
-        lobby_tuples.append({"lobby" : lobby,
-                         'count' : lobby.participants.count()})
+    argument_tuples = []
+    arguments = Argument.objects.all()
+    for argument in arguments:
+        argument_tuples.append({"argument" : argument,
+                         'count' : argument.participants.count()})
 
     context = {'title': "Lobby List",
                'user': request.user,
-               'lobbies': lobby_tuples
+               'arguments': argument_tuples
                }
     return render(request, 'pages/lobby_list.html', context)
 
