@@ -103,9 +103,9 @@ def ArgumentListView(request):
         argument_tuples.append({"argument" : argument,
                          'count' : argument.participants.count()})
 
-    context = {'title': "Lobby List",
+    context = {'title': "Argument List",
                'user': request.user,
-               'arguments': argument_tuples
+               'arguments': argument_tuples.reverse()
                }
     return render(request, 'pages/argument_list.html', context)
 
