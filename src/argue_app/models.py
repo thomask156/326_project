@@ -9,6 +9,9 @@ class Profile(models.Model):
     rank = models.IntegerField(default=0)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.user.first_name + " " + self.user.last_name
+
 
 class Topic(models.Model):
     topic_name = models.CharField(max_length=50)
