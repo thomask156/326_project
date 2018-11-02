@@ -126,5 +126,6 @@ def LobbyCreateView(request):
             chat_lobby = ChatLobby(lobby_name=argument.argument_name + " lobby")
             chat_lobby.save()
             argument.chat_lobby = chat_lobby
+            argument.creator = Profile.objects.get(user=request.user)
             argument.save()
     return render(request, 'pages/create_lobby.html', contex)
