@@ -50,7 +50,7 @@
 
     <br>
     <br>
-    <h2 style="float:left; padding-bottom: 10px"> Recent Arguments </h2>
+    <h2 style="float:left; padding-bottom: 10px; padding-left: 40px"> Recent Arguments </h2>
     <br>
 
     <table>
@@ -58,14 +58,18 @@
             <th> Topic Name </th>
             <th> Date</th>
             <th> Status </th>
+            <th> View </th>
         </tr>
 
         {% for arg in arguments %}
 
         <tr>
-            <td> {{ arg.topic_name }}</td>
-            <td> {{ arg.last_date }}</td>
-            <td class="green"> {{ arg.status }}</td>
+            <td> {{ arg.argument_name }}</td>
+            <td> {{ arg.last_updated }}</td>
+            <td class="green"> {{ arg.status.status_name }}</td>
+            <td>
+                <button style=" margin:auto; display:block; padding-left:20px; padding-right:20px" class="btn light btn-primary text-center" type="submit" value="{{ arg.id }}"> Go to Lobby </button>
+            </td>
         </tr>
 
         {% endfor %}

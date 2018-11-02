@@ -1,11 +1,19 @@
 body {
 	font-weight: 300;
-	font-family: 'Avenir', sans-serif;
 	margin:0;
   padding:0;
 	background-image: url("../img/profile/Background.png");
 	background-size: cover;
 }
+
+// button {
+//     background-color: Transparent;
+//     background-repeat:no-repeat;
+//     border: none;
+//     cursor:pointer;
+//     overflow: hidden;
+//     outline:none;
+// }
 
 h1 {
 	color:white;
@@ -90,11 +98,11 @@ table, th, td {
 }
 
 table {
-	width: 100%;
+	width: 80%;
 	background-color: #ffffff85;
 	border-collapse: collapse;
   border-radius: 12px;
-   border-style: hidden;
+  border-style: hidden;
   box-shadow: 0 0 0 1px #444;
 }
 
@@ -111,7 +119,7 @@ td.yellow {
 }
 
 td.green {
-	color: #6DE868;
+	color: #029900;
 }
 
 th, td {
@@ -176,8 +184,8 @@ img.trophy {
 img.userThumbnail {
 	height: 100px;
 	width : 100px;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 40px;
+	margin-right: 40px;
 	margin-top: 0px;
 	margin-bottom: 0px;
 }
