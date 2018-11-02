@@ -15,8 +15,8 @@
       <h3> Change My Mind </h3>
     </span>
     <span style="float:right; display:inline-block; padding-top: 12px; padding-right: 10px" class="topBar">
-      <a class="general" href=""><img class="nav" src="../../assets/img/profile/Settings.png"></a>
-      <a class="general" href=""><img class="nav" src="../../assets/img/profile/Logout.png"></a>
+      <a class="general" href=""><img class="nav" src="{% static "img/profile/Settings.png" %}"></a>
+      <a class="general" href=""><img class="nav" src="{% static "img/profile/Logout.png" %}"></a>
     </span>​
 </div>
 
@@ -25,13 +25,13 @@
 
 
     <a class="general" href="" style="float:left;">
-        <img class="userThumbnail" src="../../assets/img/profile/Thumbnail.png" align="top">
+        <img class="userThumbnail" src="{% static "img/profile/Thumbnail.png" %}" align="top">
     </a>
 
     <span class="nameFont">
       <b> {{ user.first_name }} </b> {{ user.last_name }}
-      <img class="trophy" src="../../assets/img/profile/RedTrophy.png" align="top">
-      <img class="trophy" src="../../assets/img/profile/GreenTrophy.png" align="top">
+      <img class="trophy" src="{% static "img/profile/RedTrophy.png" %}" align="top">
+      <img class="trophy" src="{% static "img/profile/GreenTrophy.png" %}" align="top">
     </span>
 
     <br>
