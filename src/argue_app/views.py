@@ -98,14 +98,14 @@ def ProfileView(request):
 
 def ArgumentListView(request):
     argument_tuples = []
-    arguments = Argument.objects.all()
+    arguments = Argument.objects.all().order_by('-last_updated')
     for argument in arguments:
         argument_tuples.append({"argument" : argument,
                          'count' : argument.participants.count()})
-
+    print(argument_tuples)
     context = {'title': "Argument List",
                'user': request.user,
-               'arguments': argument_tuples.reverse()
+               'arguments': argument_tuples
                }
     return render(request, 'pages/argument_list.html', context)
 
