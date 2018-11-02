@@ -10,17 +10,10 @@ from argue_app.models import *
 #         model = Data
 #         exclude = []
 
-
-class CreateLobbyForm(forms.ModelForm):
-    class Meta:
-        model = Lobby
-        fields = ['max_participants']
-
-
 class CreateArgumentForm(forms.ModelForm):
     class Meta:
         model = Argument
-        fields = ['topic', 'description', 'argument_name']
+        fields = ['topic', 'description', 'argument_name', 'max_participants']
 
 
 class ChatMessageForm(forms.ModelForm):
