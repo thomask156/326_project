@@ -37,14 +37,17 @@ def ChatView(request):
         form = ChatMessageForm(request.POST)
         if form.is_valid():
             chat_message = form.save(commit=False)
-            chat_message.profile = request.user
+            if request.user.is_authenticated:
+                chat_message.writer = Profile.objects.get(user=request.user)
             chat_message.timestamp = datetime.datetime.now()
+            chat_message.chat_lobby = ChatLobby.objects.get(lobby_name='Global lobby')
             chat_message.message = form.cleaned_data.get('message')
             chat_message.save()
             return redirect('chat')
     if request.method == 'GET':
         # get all messages, return them as a list
-        messages = ChatMessage.objects.all() #get this from the model
+        lobby = ChatLobby.objects.get(id=1) #get this from the model
+        messages = ChatMessage.objects.filter(chat_lobby=lobby)
         context["messages"] = messages
         return render(request, 'pages/chat.html', context)
     return render(request, 'pages/chat.html', context)
@@ -93,18 +96,18 @@ def ProfileView(request):
     return render(request, 'pages/profile.html', context)
 
 
-def LobbyListView(request):
+def ArgumentListView(request):
     argument_tuples = []
-    arguments = Argument.objects.all()
+    arguments = Argument.objects.all().order_by('-last_updated')
     for argument in arguments:
         argument_tuples.append({"argument" : argument,
                          'count' : argument.participants.count()})
-
-    context = {'title': "Lobby List",
+    print(argument_tuples)
+    context = {'title': "Argument List",
                'user': request.user,
                'arguments': argument_tuples
                }
-    return render(request, 'pages/lobby_list.html', context)
+    return render(request, 'pages/argument_list.html', context)
 
 
 def ErrorView(request):
@@ -113,8 +116,8 @@ def ErrorView(request):
     return render(request, 'shared/error.html', context)
 
 
-def LobbyCreateView(request):
-    contex = {'title': "Create Lobby",
+def ArgumentCreateView(request):
+    contex = {'title': "Create Argument",
               'topics': Topic.objects.all()
               }
     if request.method == "POST":
@@ -128,4 +131,4 @@ def LobbyCreateView(request):
             argument.chat_lobby = chat_lobby
             argument.creator = Profile.objects.get(user=request.user)
             argument.save()
-    return render(request, 'pages/create_lobby.html', contex)
+    return render(request, 'pages/create_argument.html', contex)

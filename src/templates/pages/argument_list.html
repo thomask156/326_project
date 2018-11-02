@@ -11,12 +11,12 @@
 
 <body  class="bg-info">
     <div class="container">
-      <h2 class="text-center">Pick a Lobby</h2>
+      <h2 class="text-center">Pick an Argument</h2>
 
 
         <div class="row  bg-white">
             {% if not arguments %}
-                <p>There are currently no lobbies. <a href="/argue/create_lobby/">Create one!</a></p>
+                <p>There are currently no arguments. <a href="/argue/create_argument/">Create one!</a></p>
             {% else %}
                 {% for argument_instance in arguments %}
                     <div class="col-md-8">
@@ -24,7 +24,7 @@
                         <div class="row">
                             <div class="col-md-5">Topic: {{argument_instance.argument.topic.topic_name}}</div>
                             <div class="col-md-5">Players: {{argument_instance.count}}/{{argument_instance.argument.max_participants}}</div>
-                            <button class="btn btn-primary col-md-2 text-center">Enter</button>
+                            <button class="btn btn-primary col-md-2 text-center" href="/argue/home/">Enter</button>
                         </div>
                     </div>
                     <div class="col-md-4">Description: {{argument_instance.argument.description}}</div>

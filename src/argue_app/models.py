@@ -28,7 +28,7 @@ class ChatLobby(models.Model):
 
 class ChatMessage(models.Model):
     writer = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    timestamp = models.DateField(null=True, blank=True)
+    timestamp = models.DateTimeField(null=True, blank=True)
     message = models.CharField(max_length=200)
     chat_lobby = models.ForeignKey(ChatLobby, on_delete=models.CASCADE)
 
