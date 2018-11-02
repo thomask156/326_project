@@ -1,12 +1,11 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 from argue_app.models import *
 from argue_app.forms import *
 from argue_app.serializers import *
-from django.urls import reverse
 import datetime
 import logging
 import random
@@ -22,6 +21,7 @@ log = logging.getLogger('argue')
 ###########################################################################
 
 
+@login_required(login_url='/auth/login/')
 def HomeView(request):
     context = {'title': "Home",
                'user': request.user
@@ -29,6 +29,7 @@ def HomeView(request):
     return render(request, 'pages/home.html', context)
 
 
+@login_required(login_url='/auth/login/')
 def ChatView(request):
     context = {'title': "Chat",
                'user': request.user,
@@ -53,6 +54,7 @@ def ChatView(request):
     return render(request, 'pages/chat.html', context)
 
 
+@login_required(login_url='/auth/login/')
 def SignUpView(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -83,6 +85,7 @@ def SignUpView(request):
     return render(request, 'registration/login.html', {'form': form})
 
 
+@login_required(login_url='/auth/login/')
 def ProfileView(request):
 
     profile = Profile.objects.get(user=request.user)
@@ -96,13 +99,13 @@ def ProfileView(request):
     return render(request, 'pages/profile.html', context)
 
 
+@login_required(login_url='/auth/login/')
 def ArgumentListView(request):
     argument_tuples = []
-    arguments = Argument.objects.all().order_by('-last_updated')
+    arguments = reversed(Argument.objects.all())
     for argument in arguments:
         argument_tuples.append({"argument" : argument,
                          'count' : argument.participants.count()})
-    print(argument_tuples)
     context = {'title': "Argument List",
                'user': request.user,
                'arguments': argument_tuples
@@ -116,6 +119,7 @@ def ErrorView(request):
     return render(request, 'shared/error.html', context)
 
 
+@login_required(login_url='/auth/login/')
 def ArgumentCreateView(request):
     contex = {'title': "Create Argument",
               'topics': Topic.objects.all()
