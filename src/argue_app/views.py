@@ -37,14 +37,17 @@ def ChatView(request):
         form = ChatMessageForm(request.POST)
         if form.is_valid():
             chat_message = form.save(commit=False)
-            chat_message.profile = request.user
+            if request.user.is_authenticated:
+                chat_message.writer = Profile.objects.get(user=request.user)
             chat_message.timestamp = datetime.datetime.now()
+            chat_message.chat_lobby = ChatLobby.objects.get(lobby_name='Global lobby')
             chat_message.message = form.cleaned_data.get('message')
             chat_message.save()
             return redirect('chat')
     if request.method == 'GET':
         # get all messages, return them as a list
-        messages = ChatMessage.objects.all() #get this from the model
+        lobby = ChatLobby.objects.get(id=1) #get this from the model
+        messages = ChatMessage.objects.filter(chat_lobby=lobby)
         context["messages"] = messages
         return render(request, 'pages/chat.html', context)
     return render(request, 'pages/chat.html', context)
