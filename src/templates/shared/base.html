@@ -1,27 +1,26 @@
 <!doctype html>
 {% load static %}
 <html>
-    <head>
-        <title> {{ title }} - Argue </title>
+<head>
+    <title> {{ title }} - Argue </title>
 
-        {# load the icons, styles, and scripts from head #}
-        {% include "shared/head.html" %}
-    </head>
+    {# load the icons, styles, and scripts from head #}
+    {% include "shared/head.html" %}
+    {% block styles %}
+    {% endblock %}
+</head>
 
-    <body>
-    {% include "shared/navbar.html" %}
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-3 sidebar">
-                    {% include "shared/sidebar.html" %}
-                </div>
-                <div class="col-md-9 main">
-                    {#overridden by home#}
-                    {% block content %}
-                    {% endblock content %}
-                </div>
-            </div>
+<body>
+{% include "shared/navbar.html" %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col main">
+            {#overridden by home#}
+            {% block content %}
+            {% endblock content %}
         </div>
-    {% include "shared/footer.html" %}
-    </body>
+    </div>
+</div>
+{% include "shared/footer.html" %}
+</body>
 </html>

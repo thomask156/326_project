@@ -1,54 +1,38 @@
-<!doctype html>
+{% extends 'shared/base.html' %}
 {% load static %}
-<html>
-<head>
-    <title> {{ title }} - Argue </title>
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+{% endblock %}
 
-    {# load the icons, styles, and scripts from head #}
-    {% include "shared/head.html" %}
-    <link rel="stylesheet" href="{%static 'css/chat.css' %}">
-</head>
+{% block content %}
+    <body>
+    <div class="chatbox">
+        <div class="chatlogs">
+            <ul>
+                {% for message in messages %}
+                    <div class="container">
+                        {{ message.message }}
+                        <span class="time-right">{{ message.timestamp }}</span>
+                    </div>
+                {% endfor %}
+            </ul>
 
-<body>
-<div class="chatbox">
-    <div class="chatlogs">
-        <!--<div class="chat friend">-->
-        <!--<div class="user-photo"><img src="../../assets/img/fedora.png"></div>-->
-        <!--<p class="chat-message"> What's up, Bro</p>-->
-        <!--</div>-->
-        <!--<div class="chat user">-->
-        <!--<div class="user-photo"><img src="../../assets/img/jesus.png"></div>-->
-        <!--<p class="chat-message"> Not much, I want to die</p>-->
-        <!--</div>-->
-        <ul>
-            {% for message in messages %}
-            <div class="container">
-                <!--<img src="/w3images/bandmember.jpg" alt="Avatar">-->
-                {{ message.message }}
-                <span class="time-right">{{ message.timestamp }}</span>
-            </div>
-
-            {% endfor %}
-        </ul>
-
-
-    </div>
-    <div class="chat-form">
-        <form method="post" action="{% url 'chat' %}">
-            {% csrf_token %}
-            <div class="row align-items-center justify-content-center">
-                <div class="col-auto">
-                    <input type="message" placeholder="Enter Message Here" name="message">
+        </div>
+        <div class="chat-form">
+            <form method="post" action="{% url 'chat' %}">
+                {% csrf_token %}
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <input type="message" placeholder="Enter Message Here" name="message">
+                    </div>
                 </div>
-            </div>
-            <div class="row align-items-center justify-content-center">
-                <div class="col-auto">
-                    <button class="btn">Submit</button>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-auto">
+                        <button class="btn">Submit</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-</body>
-
-</html>
+    </body>
+{% endblock content %}
