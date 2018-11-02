@@ -89,7 +89,7 @@ def SignUpView(request):
 def ProfileView(request):
 
     profile = Profile.objects.get(user=request.user)
-    my_args = profile.lobby_set.all().values_list('argument', flat=True)
+    my_args = profile.argument_set.all()
 
     context = {'title'    : "Profile",
                'user'     : request.user,

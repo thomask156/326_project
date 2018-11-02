@@ -15,38 +15,48 @@
       <a class="general" href=""><img class="nav" src="{% static "img/profile/Logout.png" %}"></a>
     </span>​
     </div>
-
     <div class="profileArea">
         <a class="general" href="" style="float:left;">
             <img class="userThumbnail" src="{% static "img/profile/Thumbnail.png" %}" align="top">
         </a>
+
         <span class="nameFont">
-          <b> {{ user.first_name }} </b> {{ user.last_name }}
-          <img class="trophy" src="{% static "img/profile/RedTrophy.png" %}" align="top">
-          <img class="trophy" src="{% static "img/profile/GreenTrophy.png" %}" align="top">
-        </span>
+      <b> {{ user.first_name }} </b> {{ user.last_name }}
+      <img class="trophy" src="{% static "img/profile/RedTrophy.png" %}" align="top">
+      <img class="trophy" src="{% static "img/profile/GreenTrophy.png" %}" align="top">
+    </span>
+
         <br>
+
         <p class="descriptionFont" style="width:1000px;">
             {{ profile.bio }}
         </p>
+
         <br>
     </div>
     <div class="argumentsList">
         <br>
         <br>
-        <h2 style="float:left; padding-bottom: 10px"> Recent Arguments </h2>
+        <h2 style="float:left; padding-bottom: 10px; padding-left: 40px"> Recent Arguments </h2>
         <br>
         <table>
             <tr>
                 <th> Topic Name</th>
                 <th> Date</th>
                 <th> Status</th>
+                <th> View</th>
             </tr>
             {% for arg in arguments %}
                 <tr>
-                    <td> {{ arg.topic_name }}</td>
-                    <td> {{ arg.last_date }}</td>
-                    <td class="green"> {{ arg.status }}</td>
+                    <td> {{ arg.argument_name }}</td>
+                    <td> {{ arg.last_updated }}</td>
+                    <td class="green"> {{ arg.status.status_name }}</td>
+                    <td>
+                        <button style=" margin:auto; display:block; padding-left:20px; padding-right:20px"
+                                class="btn light btn-primary text-center" type="submit" value="{{ arg.id }}"> Go to
+                            Lobby
+                        </button>
+                    </td>
                 </tr>
             {% endfor %}
         </table>
