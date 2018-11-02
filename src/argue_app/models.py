@@ -24,7 +24,7 @@ class ChatLobby(models.Model):
 
 class ChatMessage(models.Model):
     writer = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    timestamp = datetime.datetime.now()
+    timestamp = models.DateField(null=True, blank=True)
     message = models.CharField(max_length=200)
     chat_lobby = models.ForeignKey(ChatLobby, on_delete=models.CASCADE)
 
@@ -32,7 +32,7 @@ class ChatMessage(models.Model):
 class Argument(models.Model):
     argument_name = models.CharField(max_length=200, default='')
     last_updated = models.DateField(null=True, blank=True)
-    status = models.CharField(max_length=200, default="Ongoing")
+    status = models.ForeignKey(Status, on_delete=models.CASCADE)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     description = models.CharField(max_length=400, default="")
     max_participants = models.IntegerField()

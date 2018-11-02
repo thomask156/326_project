@@ -17,7 +17,10 @@ class Command(BaseCommand):
             :returns: None
             """
 
-        user1, created = User.objects.create_user('John', 'lennon@thebeatles.com', 'password12345')
+        user1, created = User.objects.update_or_create(id=1,
+                                                       defaults={"username": 'John',
+                                                                 "email": 'lennon@thebeatles.com',
+                                                                 "password": 'password12345'})
         user1.last_name = 'Lennon'
         user1.save()
         person1, created = Profile.objects.update_or_create(id=1,
@@ -25,7 +28,10 @@ class Command(BaseCommand):
                                                                       "rank": 15,
                                                                       "user": user1})
 
-        user2, created = User.objects.create_user('Ringo', 'ringo@thebeatles.com', 'password12345')
+        user2, created = User.objects.update_or_create(id=2,
+                                                       defaults={"username": 'Ringo',
+                                                                 "email": 'ringo@thebeatles.com',
+                                                                 "password": 'password12345'})
         user2.last_name = 'Star'
         user2.save()
         person2, created = Profile.objects.update_or_create(id=2,
@@ -33,7 +39,10 @@ class Command(BaseCommand):
                                                                       "rank": 7,
                                                                       "user": user2})
 
-        user3, created = User.objects.create_user('George', 'harrison@thebeatles.com', 'password12345')
+        user3, created = User.objects.update_or_create(id=3,
+                                                       defaults={"username": 'George',
+                                                                 "email": 'harrison@thebeatles.com',
+                                                                 "password": 'password12345'})
         user3.last_name = 'Harrison'
         user3.save()
         person3, created = Profile.objects.update_or_create(id=3,
@@ -63,9 +72,10 @@ class Command(BaseCommand):
                                                                          "topic": topic2,
                                                                          "description": "Cats are like, literally, the worst. I'd take a hat as a pet any day",
                                                                          "max_participants": 3,
-                                                                         "participants": [person1, person3],
                                                                          "creator": person3,
                                                                          "chat_lobby": chat_lobby1})
+        argument1.participants.set([person1, person3])
+        argument1.save()
 
         argument2, created = Argument.objects.update_or_create(id=2,
                                                                defaults={"argument_name": "Penguins don't have souls",
@@ -74,9 +84,10 @@ class Command(BaseCommand):
                                                                          "topic": topic1,
                                                                          "description": "Have you even seen penguins? They look like walking toasters. Totally lame.",
                                                                          "max_participants": 2,
-                                                                         "participants": [person1],
                                                                          "creator": person1,
                                                                          "chat_lobby": chat_lobby2})
+        argument2.participants.set([person1])
+        argument2.save()
 
         argument3, created = Argument.objects.update_or_create(id=3,
                                                                defaults={"argument_name": "If a hotdog isn't a sandwhich, I'm going to kill myself",
@@ -85,9 +96,10 @@ class Command(BaseCommand):
                                                                          "topic": topic3,
                                                                          "description": "I'm a grown man! I don't want to have to tell my children I'm eating a wiener!",
                                                                          "max_participants": 5,
-                                                                         "participants": [person1, person2, person3],
                                                                          "creator": person1,
                                                                          "chat_lobby": chat_lobby3})
+        argument3.participants.set([person1, person2, person3])
+        argument3.save()
 
         message1, created = ChatMessage.objects.update_or_create(id=1,
                                                                  defaults={
@@ -108,4 +120,4 @@ class Command(BaseCommand):
                                                                      "message": "Shut up you wanker",
                                                                      "chat_lobby": global_lobby})
 
-    log.info("Configuration complete")
+        log.info("Configuration complete")
