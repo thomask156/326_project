@@ -96,7 +96,7 @@ def ProfileView(request):
     return render(request, 'pages/profile.html', context)
 
 
-def LobbyListView(request):
+def ArgumentListView(request):
     argument_tuples = []
     arguments = Argument.objects.all()
     for argument in arguments:
@@ -107,7 +107,7 @@ def LobbyListView(request):
                'user': request.user,
                'arguments': argument_tuples
                }
-    return render(request, 'pages/lobby_list.html', context)
+    return render(request, 'pages/argument_list.html', context)
 
 
 def ErrorView(request):
@@ -116,8 +116,8 @@ def ErrorView(request):
     return render(request, 'shared/error.html', context)
 
 
-def LobbyCreateView(request):
-    contex = {'title': "Create Lobby",
+def ArgumentCreateView(request):
+    contex = {'title': "Create Argument",
               'topics': Topic.objects.all()
               }
     if request.method == "POST":
@@ -131,4 +131,4 @@ def LobbyCreateView(request):
             argument.chat_lobby = chat_lobby
             argument.creator = Profile.objects.get(user=request.user)
             argument.save()
-    return render(request, 'pages/create_lobby.html', contex)
+    return render(request, 'pages/create_argument.html', contex)

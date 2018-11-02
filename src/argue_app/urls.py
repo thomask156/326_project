@@ -19,7 +19,8 @@ argue_api_patterns = [
 urlpatterns = [
     url(r'^home/', HomeView, name="home"),
     url(r'^chat/', ChatView, name="chat"),
-    url(r'^lobby_list/', LobbyListView, name="lobby_list"),
+    url(r'^argument/', Argument, name="argument"),
+    url(r'^argument_list/', ArgumentListView, name="argument_list"),
     url(r'^error/', ErrorView, name="error"),
-    url(r'create_lobby/', LobbyCreateView,name='create_lobby'),
+    url(r'create_argument/', ArgumentCreateView,name='create_argument'),
 ]
