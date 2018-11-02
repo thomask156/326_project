@@ -97,16 +97,15 @@ def ProfileView(request):
 
 
 def LobbyListView(request):
-
-    lobby_tuples = []
-    lobbies = Lobby.objects.all()
-    for lobby in lobbies:
-        lobby_tuples.append({"lobby" : lobby,
-                         'count' : lobby.participants.count()})
+    argument_tuples = []
+    arguments = Argument.objects.all()
+    for argument in arguments:
+        argument_tuples.append({"argument" : argument,
+                         'count' : argument.participants.count()})
 
     context = {'title': "Lobby List",
                'user': request.user,
-               'lobbies': lobby_tuples
+               'arguments': argument_tuples
                }
     return render(request, 'pages/lobby_list.html', context)
 
@@ -122,13 +121,14 @@ def LobbyCreateView(request):
               'topics': Topic.objects.all()
               }
     if request.method == "POST":
-        lobby_form = CreateLobbyForm(request.POST)
         argue_form = CreateArgumentForm(request.POST)
-        if lobby_form.is_valid() and argue_form.is_valid():
-            lobby = lobby_form.save(commit=False)
+        if argue_form.is_valid():
             argument = argue_form.save(commit=False)
             argument.last_updated = datetime.datetime.now()
+            argument.status = Status.objects.get(status_name='Ongoing')
+            chat_lobby = ChatLobby(lobby_name=argument.argument_name + " lobby")
+            chat_lobby.save()
+            argument.chat_lobby = chat_lobby
+            argument.creator = Profile.objects.get(user=request.user)
             argument.save()
-            lobby.argument = argument
-            lobby.save()
     return render(request, 'pages/create_lobby.html', contex)

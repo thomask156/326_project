@@ -1,6 +1,7 @@
 from django.db import models
 import django.utils.timezone as tz
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 import datetime
 
 
@@ -8,6 +9,9 @@ class Profile(models.Model):
     bio = models.CharField(max_length=200)
     rank = models.IntegerField(default=0)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.first_name + " " + self.user.last_name
 
 
 class Topic(models.Model):
@@ -40,5 +44,10 @@ class Argument(models.Model):
     creator = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, related_name="creator")
     chat_lobby = models.ForeignKey(ChatLobby, on_delete=models.PROTECT)
 
+
+def save_argument(sender, instance, **kwargs):
+    instance.participants.add(instance.creator)
+
+post_save.connect(save_argument, sender=Argument)
 
 
