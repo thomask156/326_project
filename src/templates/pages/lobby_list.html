@@ -15,19 +15,19 @@
 
 
         <div class="row  bg-white">
-            {% if lobby_instance %}
+            {% if not arguments %}
                 <p>There are currently no lobbies. <a href="/argue/create_lobby/">Create one!</a></p>
             {% else %}
-                {% for lobby_instance in lobbies %}
+                {% for argument_instance in arguments %}
                     <div class="col-md-8">
-                        {{lobby_instance.lobby.argument.argument_name}}
+                        {{argument_instance.argument.argument_name}}
                         <div class="row">
-                            <div class="col-md-5">Topic: {{lobby_instance.lobby.argument.topic.topic_name}}</div>
-                            <div class="col-md-5">Players: {{lobby_instance.count}}/{{lobby_instance.lobby.max_participants}}</div>
+                            <div class="col-md-5">Topic: {{argument_instance.argument.topic.topic_name}}</div>
+                            <div class="col-md-5">Players: {{argument_instance.count}}/{{argument_instance.argument.max_participants}}</div>
                             <button class="btn btn-primary col-md-2 text-center">Enter</button>
                         </div>
                     </div>
-                    <div class="col-md-4">Description: {{lobby_instance.lobby.argument.description}}</div>
+                    <div class="col-md-4">Description: {{argument_instance.argument.description}}</div>
                 {% endfor %}
             {% endif %}
 
