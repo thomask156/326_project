@@ -21,10 +21,10 @@ class Command(BaseCommand):
                                                                  "password": 'password12345'})
         user1.last_name = 'Lennon'
         user1.save()
-        person1, created = Profile.objects.update_or_create(id=1,
-                                                            defaults={"bio": "I love dogs. Fight me about it.",
-                                                                      "rank": 15,
-                                                                      "user": user1})
+        person1 = Profile.objects.get(user=user1)
+        person1.bio = "I love dogs. Fight me about it."
+        person1.rank = 15
+        person1.save()
 
         user2, created = User.objects.update_or_create(id=2,
                                                        defaults={"username": 'Ringo',
@@ -32,10 +32,10 @@ class Command(BaseCommand):
                                                                  "password": 'password12345'})
         user2.last_name = 'Star'
         user2.save()
-        person2, created = Profile.objects.update_or_create(id=2,
-                                                            defaults={"bio": "I eat ice cream in the nude.",
-                                                                      "rank": 7,
-                                                                      "user": user2})
+        person2 = Profile.objects.get(user=user2)
+        person2.bio = "I eat ice cream in the nude."
+        person2.rank = 7
+        person2.save()
 
         user3, created = User.objects.update_or_create(id=3,
                                                        defaults={"username": 'George',
@@ -43,10 +43,10 @@ class Command(BaseCommand):
                                                                  "password": 'password12345'})
         user3.last_name = 'Harrison'
         user3.save()
-        person3, created = Profile.objects.update_or_create(id=3,
-                                                            defaults={"bio": "I love dogs. Fight me about it.",
-                                                                      "rank": 8,
-                                                                      "user": user3})
+        person3 = Profile.objects.get(user=user3)
+        person2.bio = "I love dogs. Fight me about it."
+        person2.rank = 8
+        person2.save()
 
         topic1, created = Topic.objects.update_or_create(id=1, defaults={"topic_name": "Penguins Vs. Puffins"})
         topic2, created = Topic.objects.update_or_create(id=2, defaults={"topic_name": "Hats Vs. Cats"})

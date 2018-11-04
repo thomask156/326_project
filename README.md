@@ -90,23 +90,12 @@ $ gulp (`gulp watch` for continuous collection)
 
 Collect static resources for admin site:
 $ sudo python manage.py collectstatic
-
-Run the django site:
-source .venv/bin/activate
-cd src
-python3 manage.py runserver 0.0.0.0:8000
 ```
 
 ##### Database Setup
 ```sh
 Install sqlite3:
 $ sudo apt-get install sqlite3
-
-Make the database:
-$ cd databases
-$ sqlite3 db.sqlite3
-sqlite> .exit
-$ cd ..
 
 Make migrations: 
 $ python manage.py makemigrations
@@ -126,6 +115,11 @@ $ python manage.py configure_argue
 
 ##### Contributing
 ```sh
+Run the django site:
+source .venv/bin/activate
+cd src
+python3 manage.py runserver 0.0.0.0:8000
+
 Documentation is written with [Sphinx](http://www.sphinx-doc.org/en/stable/). 
 The .rst files are located in the `sphinx` folder.
 

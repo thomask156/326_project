@@ -12,8 +12,8 @@ import random
 
 from argue_app.forms import ChatMessageForm
 
-
 log = logging.getLogger('argue')
+
 
 ###########################################################################
 #                                ARGUE VIEWS                              #
@@ -47,7 +47,7 @@ def ChatView(request):
             return redirect('chat')
     if request.method == 'GET':
         # get all messages, return them as a list
-        lobby = ChatLobby.objects.get(id=1) #get this from the model
+        lobby = ChatLobby.objects.get(id=1)  # get this from the model
         messages = ChatMessage.objects.filter(chat_lobby=lobby)
         context["messages"] = messages
         return render(request, 'pages/chat.html', context)
@@ -64,20 +64,6 @@ def SignUpView(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
 
-            names = ["Alpaca", "Cat", "Cattle",
-                     "Chicken", "Dog", "Donkey",
-                     "Ferret", "Gayal", "Goldfish",
-                     "Guppy", "Horse", "Koi", "Llama",
-                     "Sheep", "Yak"
-            ]
-
-            user.first_name = "Anonymous"
-            user.last_name = random.choice(names)
-            user.save()
-
-            profile = Profile(bio = "Lorem ipsum, people", rank = 0, user = user)
-            profile.save()
-
             login(request, user)
             return redirect('profile')
     else:
@@ -87,13 +73,12 @@ def SignUpView(request):
 
 @login_required(login_url='/auth/login/')
 def ProfileView(request):
-
     profile = Profile.objects.get(user=request.user)
     my_args = profile.argument_set.all()
 
-    context = {'title'    : "Profile",
-               'user'     : request.user,
-               'profile'  : profile,
+    context = {'title': "Profile",
+               'user': request.user,
+               'profile': profile,
                'arguments': my_args
                }
     return render(request, 'pages/profile.html', context)
@@ -104,8 +89,8 @@ def ArgumentListView(request):
     argument_tuples = []
     arguments = reversed(Argument.objects.all())
     for argument in arguments:
-        argument_tuples.append({"argument" : argument,
-                         'count' : argument.participants.count()})
+        argument_tuples.append({"argument": argument,
+                                'count': argument.participants.count()})
     context = {'title': "Argument List",
                'user': request.user,
                'arguments': argument_tuples

@@ -1,8 +1,26 @@
 from django.db import models
-import django.utils.timezone as tz
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
-import datetime
+import random
+
+
+def create_profile(sender, instance, **kwargs):
+    if Profile.objects.filter(user=instance).count() == 0:
+        names = ["Alpaca", "Cat", "Cattle",
+                 "Chicken", "Dog", "Donkey",
+                 "Ferret", "Gayal", "Goldfish",
+                 "Guppy", "Horse", "Koi", "Llama",
+                 "Sheep", "Yak"
+                 ]
+
+        instance.first_name = "Anonymous"
+        instance.last_name = random.choice(names)
+
+        profile = Profile(bio="Lorem ipsum, people", rank=0, user=instance)
+        profile.save()
+
+
+post_save.connect(create_profile, sender=User)
 
 
 class Profile(models.Model):
@@ -48,6 +66,5 @@ class Argument(models.Model):
 def save_argument(sender, instance, **kwargs):
     instance.participants.add(instance.creator)
 
+
 post_save.connect(save_argument, sender=Argument)
-
-
