@@ -4,8 +4,8 @@ from django.db.models.signals import post_save
 import random
 
 
-def create_profile(sender, instance, **kwargs):
-    if Profile.objects.filter(user=instance).count() == 0:
+def create_profile(sender, instance, created, **kwargs):
+    if created:
         names = ["Alpaca", "Cat", "Cattle",
                  "Chicken", "Dog", "Donkey",
                  "Ferret", "Gayal", "Goldfish",
@@ -15,6 +15,7 @@ def create_profile(sender, instance, **kwargs):
 
         instance.first_name = "Anonymous"
         instance.last_name = random.choice(names)
+        instance.save()
 
         profile = Profile(bio="Lorem ipsum, people", rank=0, user=instance)
         profile.save()
@@ -63,8 +64,9 @@ class Argument(models.Model):
     chat_lobby = models.ForeignKey(ChatLobby, on_delete=models.PROTECT)
 
 
-def save_argument(sender, instance, **kwargs):
-    instance.participants.add(instance.creator)
+def save_argument(sender, instance, created, **kwargs):
+    if created:
+        instance.participants.add(instance.creator)
 
 
 post_save.connect(save_argument, sender=Argument)

@@ -103,12 +103,11 @@ $ python manage.py makemigrations
 Run migrations: 
 $ python manage.py migrate
 
-Create a super user:
-$ python manage.py createsuperuser
-
 Populate database with default models:
 $ python manage.py configure_argue
 
+Create a super user:
+$ python manage.py createsuperuser
 ```
 
 ### Documentation

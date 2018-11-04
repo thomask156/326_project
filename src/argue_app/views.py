@@ -8,8 +8,7 @@ from argue_app.forms import *
 from argue_app.serializers import *
 import datetime
 import logging
-import random
-
+from django.urls import reverse
 from argue_app.forms import ChatMessageForm
 
 log = logging.getLogger('argue')
@@ -54,7 +53,6 @@ def ChatView(request):
     return render(request, 'pages/chat.html', context)
 
 
-@login_required(login_url='/auth/login/')
 def SignUpView(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
