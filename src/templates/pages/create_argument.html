@@ -13,6 +13,11 @@
                     {% csrf_token %}
                     <h1>Start an Argument</h1>
                     <label for="formArgumentName">Argument Name</label>
+                    {% if form.argument_name.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ form.argument_name.errors|escape }}</strong>
+                        </div>
+                    {% endif %}
                     <input name="argument_name" class="form-control" placeholder="Ex. PC's are better than Mac."
                            id="formArgumentName">
                     <label for="formArgumentTopic">Topic</label>
@@ -28,6 +33,11 @@
                         <option value=4>4</option>
                     </select>
                     <label for="formArgumentDescription">Description</label>
+                    {% if form.description.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ form.description.errors|escape }}</strong>
+                        </div>
+                    {% endif %}
                     <textarea name="description" class="form-control"
                               placeholder="Ex. The eternal debate. It ends today." rows="3"
                               id="formArgumentDescription"></textarea>

@@ -89,13 +89,14 @@ def ArgumentListView(request):
 
 @login_required(login_url='/auth/login/')
 def ArgumentCreateView(request):
-    contex = {'title': "Create Argument",
+    context = {'title': "Create Argument",
               'topics': Topic.objects.all()
               }
+
     if request.method == "POST":
-        argue_form = CreateArgumentForm(request.POST)
-        if argue_form.is_valid():
-            argument = argue_form.save(commit=False)
+        form = CreateArgumentForm(request.POST)
+        if form.is_valid():
+            argument = form.save(commit=False)
             argument.last_updated = datetime.datetime.now()
             argument.status = Status.objects.get(status_name='Ongoing')
             chat_lobby = ChatLobby(lobby_name=argument.argument_name + " lobby")
@@ -103,4 +104,8 @@ def ArgumentCreateView(request):
             argument.chat_lobby = chat_lobby
             argument.creator = Profile.objects.get(user=request.user)
             argument.save()
-    return render(request, 'pages/create_argument.html', contex)
+            return redirect('profile')
+    else:
+        form = CreateArgumentForm()
+    context['form'] = form
+    return render(request, 'pages/create_argument.html', context)
