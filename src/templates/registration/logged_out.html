@@ -1,2 +1,17 @@
+<!doctype html>
+{% load static %}
+<html>
+<head>
+    <title> {{ title }} - Argue </title>
+
+    {# load the icons, styles, and scripts from head #}
+    {% include "shared/head.html" %}
+    <link rel="stylesheet" href="{% static 'css/logged_out.css' %}">
+</head>
+
+<body class="bg-info bg-image">
+<div class="bg-image"></div>
 <p>Logged out!</p>
 <a href="{% url 'login'%}">Click here to login again.</a>
+</body>
+</html>

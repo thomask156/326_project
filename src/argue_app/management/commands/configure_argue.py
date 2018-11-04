@@ -1,10 +1,8 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from argue_app.models import *
 from django.contrib.auth.models import User
 import django.utils.timezone as tz
-
 import logging
-from django.utils import timezone
 
 log = logging.getLogger('argue')
 

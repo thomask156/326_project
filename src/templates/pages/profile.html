@@ -6,60 +6,58 @@
 
 {% block content %}
     <body>
-    <div class="topBar" style="height: 56px">
-    <span style="float:left; padding-left: 20px; padding-top: 12px;" class="topBar">
-      <h3> Change My Mind </h3>
-    </span>
-        <span style="float:right; display:inline-block; padding-top: 12px; padding-right: 10px" class="topBar">
-      <a class="general" href=""><img class="nav" src="{% static "img/profile/Settings.png" %}"></a>
-      <a class="general" href=""><img class="nav" src="{% static "img/profile/Logout.png" %}"></a>
-    </span>​
-    </div>
-    <div class="profileArea">
-        <a class="general" href="" style="float:left;">
-            <img class="userThumbnail" src="{% static "img/profile/Thumbnail.png" %}" align="top">
-        </a>
-
-        <span class="nameFont">
-      <b> {{ user.first_name }} </b> {{ user.last_name }}
-      <img class="trophy" src="{% static "img/profile/RedTrophy.png" %}" align="top">
-      <img class="trophy" src="{% static "img/profile/GreenTrophy.png" %}" align="top">
-    </span>
-
-        <br>
-
-        <p class="descriptionFont" style="width:1000px;">
-            {{ profile.bio }}
-        </p>
-
-        <br>
-    </div>
-    <div class="argumentsList">
-        <br>
-        <br>
-        <h2 style="float:left; padding-bottom: 10px; padding-left: 40px"> Recent Arguments </h2>
-        <br>
-        <table>
-            <tr>
-                <th> Topic Name</th>
-                <th> Date</th>
-                <th> Status</th>
-                <th> View</th>
-            </tr>
-            {% for arg in arguments %}
+    <div class="container">
+        <div class="row justify-content-left align-content-center">
+            <div class="col-auto">
+                <img class="user-thumbnail" src="{% static "img/profile/Thumbnail.png" %}">
+            </div>
+            <div class="col-auto">
+                <div class="row">
+                    <div class="col-auto">
+                        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                    </div>
+                    <div class="col-auto">
+                        <img src="{% static "img/profile/RedTrophy.png" %}">
+                        <img src="{% static "img/profile/GreenTrophy.png" %}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <h6>{{ profile.bio }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2> Recent Arguments </h2>
+        </div>
+        <div class="row argumentsList">
+            <table>
+                <thead>
                 <tr>
-                    <td> {{ arg.argument_name }}</td>
-                    <td> {{ arg.last_updated }}</td>
-                    <td class="green"> {{ arg.status.status_name }}</td>
-                    <td>
-                        <button style=" margin:auto; display:block; padding-left:20px; padding-right:20px"
-                                class="btn light btn-primary text-center" type="submit" value="{{ arg.id }}"> Go to
-                            Lobby
-                        </button>
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
+                    <td>Topic Name</td>
+                    <td>Date</td>
+                    <td>Status</td>
+                    <td>View</td>
+                <tr>
+                </thead>
+                <tbody>
+                {% for arg in arguments %}
+                    <tr>
+                        <td> {{ arg.argument_name }}</td>
+                        <td> {{ arg.last_updated }}</td>
+                        <td class="green"> {{ arg.status.status_name }}</td>
+                        <td>
+                            <button style=" margin:auto; display:block; padding-left:20px; padding-right:20px"
+                                    class="btn light btn-primary text-center" type="submit" value="{{ arg.id }}"> Go to
+                                Lobby
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
     </body>
 {% endblock content %}

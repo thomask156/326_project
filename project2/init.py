@@ -1,102 +1,109 @@
-from catalog.models import Genre, Book, BookInstance, Author
-from faker import Faker
-from datetime import timedelta
-import textwrap
+from argue_app.models import *
+from django.contrib.auth.models import User
+import django.utils.timezone as tz
 
 fake = Faker()
 
-# Create Genres
-genres = [
-    Genre(name='Science Fiction'),
-    Genre(name='Satire'),
-    Genre(name='Drama'),
-    Genre(name='Adventure'),
-    Genre(name='Romance'),
-    Genre(name='Mystery')
-]
+user1, created = User.objects.update_or_create(id=1,
+                                               defaults={"username": 'John',
+                                                         "email": 'lennon@thebeatles.com',
+                                                         "password": 'password12345'})
+user1.last_name = 'Lennon'
+user1.save()
+person1, created = Profile.objects.update_or_create(id=1,
+                                                    defaults={"bio": "I love dogs. Fight me about it.",
+                                                              "rank": 15,
+                                                              "user": user1})
 
-# Save the genres to the database
-for genre in genres:
-    genre.save()
+user2, created = User.objects.update_or_create(id=2,
+                                               defaults={"username": 'Ringo',
+                                                         "email": 'ringo@thebeatles.com',
+                                                         "password": 'password12345'})
+user2.last_name = 'Star'
+user2.save()
+person2, created = Profile.objects.update_or_create(id=2,
+                                                    defaults={"bio": "I eat ice cream in the nude.",
+                                                              "rank": 7,
+                                                              "user": user2})
 
-# Create Authors
-authors = []
-for i in range(1, 10):
-    a_fname = fake.first_name()
-    a_lname = fake.last_name()
-    a_dob = fake.date_of_birth()
-    a_dod = a_dob + timedelta(days=365*fake.random_int(65,100))
-    author = Author(first_name=a_fname,
-                    last_name=a_lname,
-                    date_of_birth=a_dob,
-                    date_of_death=a_dod)
-    author.save()
-    authors.append(author)
+user3, created = User.objects.update_or_create(id=3,
+                                               defaults={"username": 'George',
+                                                         "email": 'harrison@thebeatles.com',
+                                                         "password": 'password12345'})
+user3.last_name = 'Harrison'
+user3.save()
+person3, created = Profile.objects.update_or_create(id=3,
+                                                    defaults={"bio": "I love dogs. Fight me about it.",
+                                                              "rank": 8,
+                                                              "user": user3})
 
+topic1, created = Topic.objects.update_or_create(id=1, defaults={"topic_name": "Penguins Vs. Puffins"})
+topic2, created = Topic.objects.update_or_create(id=2, defaults={"topic_name": "Hats Vs. Cats"})
+topic3, created = Topic.objects.update_or_create(id=3, defaults={"topic_name": "Is a hotdog a sandwich"})
 
-# Create Books
-books = []
-for i in range(1, 10):
-    a_title = fake.text(50)
-    a_author = authors[fake.random_int(0, len(authors)) - 1]
-    a_summary = fake.text(1000)
-    a_isbn = fake.isbn13()
-    book = Book(title=a_title,
-                author=a_author,
-                summary=a_summary,
-                isbn=a_isbn)
-    book.save()
-    book.genre.add(genres[fake.random_int(0, len(genres)) - 1])
-    book.save()
-    books.append(book)
+status1, created = Status.objects.update_or_create(id=1, defaults={"status_name": "Not started"})
+status2, created = Status.objects.update_or_create(id=2, defaults={"status_name": "Ongoing"})
+status3, created = Status.objects.update_or_create(id=3, defaults={"status_name": "Cancelled"})
+status4, created = Status.objects.update_or_create(id=4, defaults={"status_name": "Resolved"})
+status5, created = Status.objects.update_or_create(id=5, defaults={"status_name": "Unresolved"})
 
+global_lobby, created = ChatLobby.objects.update_or_create(id=1, defaults={"lobby_name": "Global lobby"})
+chat_lobby1, created = ChatLobby.objects.update_or_create(id=2, defaults={"lobby_name": "argument 1"})
+chat_lobby2, created = ChatLobby.objects.update_or_create(id=3, defaults={"lobby_name": "argument 2"})
+chat_lobby3, created = ChatLobby.objects.update_or_create(id=4, defaults={"lobby_name": "argument 3"})
 
-# Create fake events
-events = []
-for i in range(1, 10):
-    a_title = fake.text(50)
-    a_time_date = fake.date_of_birth()
-    a_location = fake.text(50)
-    
-    event = Event()
+argument1, created = Argument.objects.update_or_create(id=1,
+                                                       defaults={"argument_name": "Cats aren't that great",
+                                                                 "last_updated": tz.datetime.now(),
+                                                                 "status": status4,
+                                                                 "topic": topic2,
+                                                                 "description": "Cats are like, literally, the worst. I'd take a hat as a pet any day",
+                                                                 "max_participants": 3,
+                                                                 "creator": person3,
+                                                                 "chat_lobby": chat_lobby1})
+argument1.participants.set([person1, person3])
+argument1.save()
 
+argument2, created = Argument.objects.update_or_create(id=2,
+                                                       defaults={"argument_name": "Penguins don't have souls",
+                                                                 "last_updated": tz.datetime.now(),
+                                                                 "status": status1,
+                                                                 "topic": topic1,
+                                                                 "description": "Have you even seen penguins? They look like walking toasters. Totally lame.",
+                                                                 "max_participants": 2,
+                                                                 "creator": person1,
+                                                                 "chat_lobby": chat_lobby2})
+argument2.participants.set([person1])
+argument2.save()
 
+argument3, created = Argument.objects.update_or_create(id=3,
+                                                       defaults={"argument_name": "If a hotdog isn't a sandwhich, I'm going to be sad!",
+                                                                 "last_updated": tz.datetime.now(),
+                                                                 "status": status4,
+                                                                 "topic": topic3,
+                                                                 "description": "I'm a grown man! I don't want to have to tell my children I'm eating a wiener!",
+                                                                 "max_participants": 5,
+                                                                 "creator": person1,
+                                                                 "chat_lobby": chat_lobby3})
+argument3.participants.set([person1, person2, person3])
+argument3.save()
 
-
-instances = []
-for i in range(1, 400):
-    a_book = books[fake.random_int(0, len(books)) - 1]
-    a_imprint = fake.text(200)
-    a_status = 'a'
-    instance = BookInstance(book=a_book,
-                            imprint=a_imprint,
-                            status=a_status)
-    instance.save()
-    instances.append(instance)
-
-print('Genre:')
-for g in Genre.objects.all():
-    print(g)
-
-print('\nAuthor:')
-for a in Author.objects.all():
-    print(a)
-
-print('\nBook:')
-for b in Book.objects.all():
-    print(b)
-
-print('\nBookInstance:')
-for i in BookInstance.objects.all():
-    print(i)
-
-# Retrieve a random book from model and print it.
-books_count = Book.objects.count()
-book = Book.objects.all()[fake.random_int(0, books_count - 1)]
-
-print('\nExample Book:')
-print(f'Title: {book.title}')
-print(f'Author: {book.author}')
-print(f'ISBN: {book.isbn}')
-print(f'Summary:\n{textwrap.fill(book.summary, 77)}')
+message1, created = ChatMessage.objects.update_or_create(id=1,
+                                                         defaults={
+                                                             "writer": person2,
+                                                             "timestamp": tz.datetime.now(),
+                                                             "message": "Yo any of you know any good jams?",
+                                                             "chat_lobby": global_lobby})
+message2, created = ChatMessage.objects.update_or_create(id=2,
+                                                         defaults={
+                                                             "writer": person1,
+                                                             "timestamp": tz.datetime.now(),
+                                                             "message": "I heard 'Come Together' is pretty good",
+                                                             "chat_lobby": global_lobby})
+message3, created = ChatMessage.objects.update_or_create(id=3,
+                                                         defaults={
+                                                             "writer": person3,
+                                                             "timestamp": tz.datetime.now(),
+                                                             "message": "Cool it fuzz",
+                                                             "chat_lobby": global_lobby})
 
