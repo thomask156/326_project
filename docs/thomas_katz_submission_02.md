@@ -1,12 +1,5 @@
-Every team member should have a file corresponding to their first and last names. Each team member must submit three paragraphs that describe exactly what she did as an individual that contributed to the project as a whole. For example:
+For this portion of the project, I worked on the chat message model and page. For the model, I had to determine what to store in each chat message. I decided that the message is obviously the most important part, but it would also be necessary to know who wrote the message and when. I also had to make sure the message was being sent to the right argument, so the use of a lobby id was necessary to make sure this occurred. Furthermore, I had to work on the view function for the chat page. I needed to make sure if a user send a message I could retrieve their id, the time it was sent and what the message was. I had to save this to the chat message table and update the chat page accordingly. I also had to make sure I got every message sent in the specific lobby so that the chat page wasn't blank if messages were already sent.
 
-I contributed to several aspects of this project. Specifically, I made a key observation that our data model required two additional entities to make the application work …
+In addition, I spent a large part of my time working on the proposal document. I made sure to keep track of how well we were doing as a group and took time to understand how the web application would function with the entities and relationships we had. 
 
-In addition, I designed and implemented the view code for the main UI as well as providing the URL design and mapping …
-
-Lastly, ...
-
-
-
-
-
+Lastly, I worked on the html page for the chat. This included making sure the chat was contained in an easily viewable window with a scroll wheel in case there were more messages than could fit in a window. I made sure the information sent by the form was correct and used a POST request and I also took some time to work on the CSS. The CSS changes included making the chat readable and giving it a conventional look that our users would find intuitive. While work isn't close to done, I see our project shaping up nicely. 
