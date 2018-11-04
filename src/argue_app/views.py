@@ -8,7 +8,6 @@ from argue_app.forms import *
 from argue_app.serializers import *
 import datetime
 import logging
-from django.urls import reverse
 from argue_app.forms import ChatMessageForm
 
 log = logging.getLogger('argue')
@@ -18,14 +17,6 @@ log = logging.getLogger('argue')
 #                                ARGUE VIEWS                              #
 #                                                                         #
 ###########################################################################
-
-
-@login_required(login_url='/auth/login/')
-def HomeView(request):
-    context = {'title': "Home",
-               'user': request.user
-               }
-    return render(request, 'pages/home.html', context)
 
 
 @login_required(login_url='/auth/login/')
@@ -94,12 +85,6 @@ def ArgumentListView(request):
                'arguments': argument_tuples
                }
     return render(request, 'pages/argument_list.html', context)
-
-
-def ErrorView(request):
-    context = {'title': "Error",
-               }
-    return render(request, 'shared/error.html', context)
 
 
 @login_required(login_url='/auth/login/')
