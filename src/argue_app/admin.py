@@ -1,17 +1,9 @@
 from django.contrib import admin
 from argue_app.models import *
-from import_export.admin import ImportExportModelAdmin, ImportExportActionModelAdmin
 
-# class DataAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin):
-# 	list_display = ()
-# 	filter_horizontal = ()
-# 	search_fields = []
-# 	fields = ()
-# 	readonly_fields = ()
-# 	list_filter = []
-# admin.site.register(Data, DataAdmin)
-
-admin.site.register(Topic)
-admin.site.register(Argument)
 admin.site.register(Profile)
+admin.site.register(Topic)
 admin.site.register(Status)
+admin.site.register(ChatLobby)
+admin.site.register(ChatMessage)
+admin.site.register(Argument)
