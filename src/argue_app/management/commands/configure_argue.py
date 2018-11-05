@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand
 from argue_app.models import *
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 import django.utils.timezone as tz
 import logging
 
@@ -18,7 +19,7 @@ class Command(BaseCommand):
         user1, created = User.objects.update_or_create(id=1,
                                                        defaults={"username": 'John',
                                                                  "email": 'lennon@thebeatles.com',
-                                                                 "password": 'password12345'})
+                                                                 "password": make_password('password')})
         user1.last_name = 'Lennon'
         user1.save()
         person1 = Profile.objects.get(user=user1)
@@ -29,7 +30,7 @@ class Command(BaseCommand):
         user2, created = User.objects.update_or_create(id=2,
                                                        defaults={"username": 'Ringo',
                                                                  "email": 'ringo@thebeatles.com',
-                                                                 "password": 'password12345'})
+                                                                 "password": make_password('password')})
         user2.last_name = 'Star'
         user2.save()
         person2 = Profile.objects.get(user=user2)
@@ -40,7 +41,7 @@ class Command(BaseCommand):
         user3, created = User.objects.update_or_create(id=3,
                                                        defaults={"username": 'George',
                                                                  "email": 'harrison@thebeatles.com',
-                                                                 "password": 'password12345'})
+                                                                 "password": make_password('password')})
         user3.last_name = 'Harrison'
         user3.save()
         person3 = Profile.objects.get(user=user3)
