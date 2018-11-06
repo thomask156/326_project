@@ -1,10 +1,8 @@
-Every team member should have a file corresponding to their first and last names. Each team member must submit three paragraphs that describe exactly what she did as an individual that contributed to the project as a whole. For example:
+For Phase #2 of this project, I worked on the Profile screen which is the intended to be the main landing page after you log in.  The profile screen has a profile picture, your name, a bio, any trophies you've earned, and a list of all arguments you've participated in.  I wrote the template which will insert all of that information based on the Profile context.  I wrote views.ProfileView which gets all of the arguments that a person is tied to and then creates a context with that user, their profile, and all of their arguments and then renders the template.  
 
-I contributed to several aspects of this project. Specifically, I made a key observation that our data model required two additional entities to make the application work …
+In addition, I wrote the Profile model which stores the bio, your rank and a one-to-one relationship with the User – as each User should have a profile tied with that account.  I also wrote the Argument model (which was later added to by other people working on other things).  It has a few attributes like name, last_updated, and max_participants, and also has a lot of relationships with other model entities that other people created.
 
-In addition, I designed and implemented the view code for the main UI as well as providing the URL design and mapping …
-
-Lastly, ...
+Lastly, I created the data model diagram in Xcode's modeling interface for the submission.  It has a list of all the attributes for each model entity and all of the relationships that exist in our data model. 
 
 
 
