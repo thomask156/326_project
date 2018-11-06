@@ -16,6 +16,7 @@ Preston Sheppard ([psheppard16](https://github.com/psheppard16))
 Seth Tinglof ([seth-tinglof](https://github.com/seth-tinglof))  
 
 ## Video Link
+https://youtu.be/NmL1yaNTvbI
 
 ## Design Overview
 #### Users and profiles:

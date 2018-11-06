@@ -1,12 +1,5 @@
-Every team member should have a file corresponding to their first and last names. Each team member must submit three paragraphs that describe exactly what she did as an individual that contributed to the project as a whole. For example:
+For this project, I created the argument list view. Under views, I retrieved all of the arguments from our data model and sorted them into a list. The list was in chronological order, with the newer arguments on top. I then paired the arguments with the current number of people in the argument.
 
-I contributed to several aspects of this project. Specifically, I made a key observation that our data model required two additional entities to make the application work …
+I also worked on argument_list.html. Here, I looped through the list of arguments given from views.py. Each argument displays the argument name, the topic, the amount of debaters out of the max amount of debaters, and the description of the argument. I also went through the entire project and renamed every instance of "lobby" to "argument" when applicable, to keep our code clean and consistent (this took longer than one would think).
 
-In addition, I designed and implemented the view code for the main UI as well as providing the URL design and mapping …
-
-Lastly, ...
-
-
-
-
-
+Finally, I created the video presentation for our project. I wrote the script, recorded the video section, and edited it together. I did not create the data model diagram used in the video, but all other assets in the video were edited by me. 
