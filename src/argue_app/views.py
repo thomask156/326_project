@@ -44,6 +44,32 @@ def ChatView(request):
     return render(request, 'pages/chat.html', context)
 
 
+@login_required(login_url='/auth/login/')
+def ArgumentView(request, argument_id=0):
+    argument = Argument.objects.get(id=argument_id)
+    context = {'title': "Argument",
+               'user': request.user,
+               'argument': argument,
+               }
+    if request.method == 'POST':
+        form = ChatMessageForm(request.POST)
+        if form.is_valid():
+            chat_message = form.save(commit=False)
+            if request.user.is_authenticated:
+                chat_message.writer = Profile.objects.get(user=request.user)
+            chat_message.timestamp = datetime.datetime.now()
+            chat_message.chat_lobby = argument.chat_lobby
+            chat_message.message = form.cleaned_data.get('message')
+            chat_message.save()
+            return redirect('argument', argument_id=argument_id)
+    if request.method == 'GET':
+        # get all messages, return them as a list
+        messages = ChatMessage.objects.filter(chat_lobby=argument.chat_lobby)
+        context["messages"] = messages
+        return render(request, 'pages/argument.html', context)
+    return render(request, 'pages/argument.html', context)
+
+
 def SignUpView(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -75,15 +101,22 @@ def ProfileView(request):
 
 @login_required(login_url='/auth/login/')
 def ArgumentListView(request):
-    argument_tuples = []
-    arguments = reversed(Argument.objects.all())
-    for argument in arguments:
-        argument_tuples.append({"argument": argument,
-                                'count': argument.participants.count()})
     context = {'title': "Argument List",
                'user': request.user,
-               'arguments': argument_tuples
                }
+    if request.method == "POST":
+        argument_id = 0
+        for key in request.POST:
+            if 'join_' in key:
+                argument_id = request.POST[key]
+        return redirect('argument', argument_id=argument_id)
+    else:
+        argument_tuples = []
+        arguments = reversed(Argument.objects.all())
+        for argument in arguments:
+            argument_tuples.append({"argument": argument,
+                                    'count': argument.participants.count()})
+        context['arguments'] = argument_tuples
     return render(request, 'pages/argument_list.html', context)
 
 
@@ -104,7 +137,7 @@ def ArgumentCreateView(request):
             argument.chat_lobby = chat_lobby
             argument.creator = Profile.objects.get(user=request.user)
             argument.save()
-            return redirect('profile')
+            return redirect('argument', argument_id=argument.id)
     else:
         form = CreateArgumentForm()
     context['form'] = form
