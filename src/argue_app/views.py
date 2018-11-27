@@ -127,26 +127,13 @@ def EditProfileView(request):
         form = EditProfileForm(request.POST)
         if form.is_valid():
 
-            first = form.cleaned_data['first_name']
-            last = form.cleaned_data['last_name']
-            bio = form.cleaned_data['bio']
-
-            request.user.first_name = first
-            request.user.last_name = last
-            profile.bio = bio
+            request.user.first_name = form.cleaned_data['first_name']
+            request.user.last_name = form.cleaned_data['last_name']
+            profile.bio = form.cleaned_data['bio']
 
             request.user.save()
             profile.save()
 
-
-            # argument = form.save(commit=False)
-            # argument.last_updated = datetime.datetime.now()
-            # argument.status = Status.objects.get(status_name='Ongoing')
-            # chat_lobby = ChatLobby(lobby_name=argument.argument_name + " lobby")
-            # chat_lobby.save()
-            # argument.chat_lobby = chat_lobby
-            # argument.creator = Profile.objects.get(user=request.user)
-            # argument.save()
             return redirect('profile')
     else:
         form = EditProfileForm()
