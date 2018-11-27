@@ -6,7 +6,7 @@
 
 {% block content %}
     <body>
-    <div class="container">
+    <div class="container" style="margin-top:20px">
         <div class="row justify-content-left align-content-center">
             <div class="col-auto">
                 <img class="user-thumbnail" src="{% static "img/profile/Thumbnail.png" %}">
@@ -16,10 +16,19 @@
                     <div class="col-auto">
                         <h2>{{ user.first_name }} {{ user.last_name }}</h2>
                     </div>
+
+                    <div class="col-auto">
+                      <button style="display:block; margin-left:-5px; margin-top:2px;"
+                              class="btn light editButton btn-primary" type="submit" value="">
+                      </button>
+                    </div>
+
                     <div class="col-auto">
                         <img src="{% static "img/profile/RedTrophy.png" %}">
                         <img src="{% static "img/profile/GreenTrophy.png" %}">
                     </div>
+
+
                 </div>
                 <div class="row">
                     <div class="col-auto">
@@ -30,9 +39,12 @@
         </div>
         <div class="row">
             <h2> Recent Arguments </h2>
+            <button style="display:block; margin-left:20px; margin-top:5px;"
+                    class="btn light addButton btn-primary" type="submit" value="">
+            </button>
         </div>
         <div class="row argumentsList">
-            <table>
+            <table style="margin-top:10px">
                 <thead>
                 <tr>
                     <td>Topic Name</td>

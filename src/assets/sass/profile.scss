@@ -56,3 +56,19 @@ img.user-thumbnail {
   height: 100px;
   width: 100px;
 }
+
+button.editButton {
+     background-image: url("../img/profile/Edit.png");
+     height: 32px;
+     width: 32px;
+     background-color:transparent;
+     Background-size: 100%;
+}
+
+button.addButton {
+     background-image: url("../img/profile/New.png");
+     height: 32px;
+     width: 32px;
+     background-color:transparent;
+     Background-size: 100%;
+}
