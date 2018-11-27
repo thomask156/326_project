@@ -109,3 +109,46 @@ def ArgumentCreateView(request):
         form = CreateArgumentForm()
     context['form'] = form
     return render(request, 'pages/create_argument.html', context)
+
+
+@login_required(login_url='/auth/login/')
+def EditProfileView(request):
+
+    profile = Profile.objects.get(user=request.user)
+
+    context = {
+        'title': "Edit Profile",
+        'first_name': request.user.first_name,
+        'last_name' : request.user.last_name,
+        'bio'       : profile.bio
+    }
+
+    if request.method == "POST":
+        form = EditProfileForm(request.POST)
+        if form.is_valid():
+
+            first = form.cleaned_data['first_name']
+            last = form.cleaned_data['last_name']
+            bio = form.cleaned_data['bio']
+
+            request.user.first_name = first
+            request.user.last_name = last
+            profile.bio = bio
+
+            request.user.save()
+            profile.save()
+
+
+            # argument = form.save(commit=False)
+            # argument.last_updated = datetime.datetime.now()
+            # argument.status = Status.objects.get(status_name='Ongoing')
+            # chat_lobby = ChatLobby(lobby_name=argument.argument_name + " lobby")
+            # chat_lobby.save()
+            # argument.chat_lobby = chat_lobby
+            # argument.creator = Profile.objects.get(user=request.user)
+            # argument.save()
+            return redirect('profile')
+    else:
+        form = EditProfileForm()
+    context['form'] = form
+    return render(request, 'pages/edit_profile.html', context)

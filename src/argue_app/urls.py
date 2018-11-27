@@ -18,6 +18,7 @@ argue_api_patterns = [
 
 urlpatterns = [
     url(r'^create_argument/', ArgumentCreateView,name='create_argument'),
+    url(r'^edit_profile/', EditProfileView,name='edit_profile'),
     url(r'^argument_list/', ArgumentListView, name="argument_list"),
     url(r'^profile', ProfileView, name="profile"),
     url(r'^chat/', ChatView, name="chat"),
