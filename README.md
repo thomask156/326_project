@@ -10,14 +10,37 @@ this repository:
   requested as part of the submission.
 * `src` - this folder is used for your project code.
 
-### Configuration ###
-
 ##### Clone and Setup Repository
 ```sh
 Clone and enter repo:
 $ git clone https://github.com/thomask156/326_project.git
 $ cd 326_project
 ```
+
+### Basic Configuration ###
+
+##### Configuring and starting vagrant
+```sh
+Download VirtualBox.
+
+Download Vagrant.
+
+Create environment:
+$ vagrant up
+$ vagrant ssh
+
+Navigating to the project:
+$ cd /vagrant
+```
+
+##### Configuring dependencies, static files, and database
+```sh
+$ cd /src
+$ ./configure.sh
+$ ./init.sh
+```
+
+### Development Configuration ###
 
 ##### Configuring and starting vagrant
 ```sh
