@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^profile', ProfileView, name='profile'),
     url(r'^chat/', ChatView, name='chat'),
     path('argument/<int:argument_id>/', ArgumentView, name='argument'),
+    url(r'^edit_profile/', EditProfileView,name='edit_profile'),
 ]

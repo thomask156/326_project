@@ -19,7 +19,7 @@
 
                     <div class="col-auto">
                       <button style="display:block; margin-left:-5px; margin-top:2px;"
-                              class="btn light editButton btn-primary" type="submit" value="">
+                              class="btn light editButton btn-primary" type="submit" onclick="location.href='{% url 'edit_profile' %}'">
                       </button>
                     </div>
 
@@ -40,7 +40,7 @@
         <div class="row">
             <h2> Recent Arguments </h2>
             <button style="display:block; margin-left:20px; margin-top:5px;"
-                    class="btn light addButton btn-primary" type="submit" value="">
+                    class="btn light addButton btn-primary" type="submit" onclick="location.href='{% url 'create_argument' %}'">
             </button>
         </div>
         <div class="row argumentsList">

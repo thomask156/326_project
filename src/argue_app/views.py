@@ -123,8 +123,8 @@ def ArgumentListView(request):
 @login_required(login_url='/auth/login/')
 def ArgumentCreateView(request):
     context = {'title': "Create Argument",
-              'topics': Topic.objects.all()
-              }
+               'topics': Topic.objects.all()
+               }
 
     if request.method == "POST":
         form = CreateArgumentForm(request.POST)
@@ -142,3 +142,31 @@ def ArgumentCreateView(request):
         form = CreateArgumentForm()
     context['form'] = form
     return render(request, 'pages/create_argument.html', context)
+
+
+@login_required(login_url='/auth/login/')
+def EditProfileView(request):
+    profile = Profile.objects.get(user=request.user)
+
+    context = {
+        'title': "Edit Profile",
+        'first_name': request.user.first_name,
+        'last_name': request.user.last_name,
+        'bio': profile.bio
+    }
+
+    if request.method == "POST":
+        form = EditProfileForm(request.POST)
+        if form.is_valid():
+            request.user.first_name = form.cleaned_data['first_name']
+            request.user.last_name = form.cleaned_data['last_name']
+            profile.bio = form.cleaned_data['bio']
+
+            request.user.save()
+            profile.save()
+
+            return redirect('profile')
+    else:
+        form = EditProfileForm()
+    context['form'] = form
+    return render(request, 'pages/edit_profile.html', context)

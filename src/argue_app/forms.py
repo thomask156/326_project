@@ -10,6 +10,14 @@ from argue_app.models import *
 #         model = Data
 #         exclude = []
 
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name']
+
+    bio = forms.CharField(max_length=100)
+
+
 class CreateArgumentForm(forms.ModelForm):
     class Meta:
         model = Argument

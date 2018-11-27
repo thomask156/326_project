@@ -1,0 +1,54 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <body class="bg-info">
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="card card-body col-6">
+                <form method="post" action="{% url 'edit_profile' %}">
+                    {% csrf_token %}
+                    <h1>Edit Profile</h1>
+                    <label for="formFirstName">First Name</label>
+                    {% if form.first_name.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ form.first_name.errors|escape }}</strong>
+                        </div>
+                    {% endif %}
+                    <input name="first_name" class="form-control" placeholder="John" id="formFirstName" value="{{ first_name }}">
+
+                    <label for="formLastName"> Last Name</label>
+                    {% if form.last_name.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ form.last_name.errors|escape }}</strong>
+                        </div>
+                    {% endif %}
+                    <input name="last_name" class="form-control" placeholder="Smith" id="formLastName" value="{{ last_name }}">
+
+
+
+                    <label for="formBio"> Bio </label>
+                    {% if form.bio.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ form.bio.errors|escape }}</strong>
+                        </div>
+                    {% endif %}
+
+                    <textarea name="bio" class="form-control" placeholder="Lorum ipsum" rows="3"
+                              id="formBio"> {{ bio }} </textarea>
+
+                    <div class="row align-items-center justify-content-center top-buffer">
+                        <div class="col-auto">
+                            <button class="btn">Save</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock content %}
