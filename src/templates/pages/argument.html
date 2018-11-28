@@ -1,38 +1,14 @@
 {% extends 'shared/base.html' %}
 {% load static %}
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/argument.css' %}">
+<link rel="stylesheet" href="{% static 'css/argument.css' %}">
 {% endblock %}
 
 {% block content %}
-    <body>
-    <div class="chatbox">
-        <div class="chatlogs">
-            <ul>
-                {% for message in messages %}
-                    <div class="container">
-                        {{ message.message }}
-                        <span class="time-right">{{ message.timestamp }}</span>
-                    </div>
-                {% endfor %}
-            </ul>
-
-        </div>
-        <div class="chat-form">
-            <form method="post" action="{% url 'argument' argument.id %}">
-                {% csrf_token %}
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-auto">
-                        <input type="message" placeholder="Enter Message Here" name="message">
-                    </div>
-                </div>
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-auto">
-                        <button class="btn">Submit</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    </body>
+<body>
+<div class="container">
+    <h2 class="text-center">{{ argument.argument_name }}</h2>
+    {% include 'shared/chat_lobby.html' %}
+</div>
+</body>
 {% endblock content %}

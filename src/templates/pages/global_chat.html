@@ -1,0 +1,12 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/global_chat.css' %}">
+{% endblock %}
+
+{% block content %}
+    <body>
+        {% include 'shared/chat_lobby.html' %}
+    </body>
+{% endblock content %}

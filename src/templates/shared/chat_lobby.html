@@ -1,0 +1,35 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/chat_lobby.css' %}">
+<div class="chatbox">
+    <div class="chatlogs">
+        <ul>
+            {% for message in chat_lobby.chatmessage_set.all %}
+            <div class="message container">
+                <div class="row">
+                    <div class="col">
+                        <p class="writer-left">{{ message.writer }}:</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <span>{{ message.message }}</span>
+                        <span class="time">{{ message.timestamp }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </ul>
+
+    </div>
+    <form class="chat-form" method="post" action="{% url 'chat_lobby' chat_lobby.id %}">
+        {% csrf_token %}
+        <div class="row align-items-center justify-content-center w-100">
+            <div class="col">
+                <textarea placeholder="Enter Message Here" name="message"></textarea>
+            </div>
+            <div class="col-auto">
+                <button class="btn" name="next_url" value={{ request.get_full_path }}>Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

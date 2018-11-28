@@ -1,26 +1,10 @@
-<!--<nav class="navbar navbar-default" role="navigation">-->
-    <!--<a class="header_name" href="{% url 'profile' %}">{{ user.username }}</a>-->
-    <!--<ul class="nav navbar-nav mr-auto">-->
-        <!--<li class="nav-item active">-->
-            <!--<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-            <!--<a class="nav-link" href="#">Features</a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-            <!--<a class="nav-link" href="#">Pricing</a>-->
-        <!--</li>-->
-    <!--</ul>-->
-    <!--<a class="header_logout" href="{% url 'logout' %}">Logout</a>-->
-<!--</nav>-->
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="header_name" href="{% url 'profile' %}">{{ user.username }}</a>
 
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <h1><a class="header_name nav-link" href="{% url 'chat' %}">Chat</a></h1>
+        <h1><a class="header_name nav-link" href="{% url 'global_chat' %}">Chat</a></h1>
       </li>
       <li class="nav-item">
         <h1><a class="header_name nav-link" href="{% url 'argument_list' %}">Join Argument</a></h1>

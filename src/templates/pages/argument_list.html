@@ -1,46 +1,47 @@
 {% extends 'shared/base.html' %}
 {% load static %}
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/argument_list.css' %}">
+<link rel="stylesheet" href="{% static 'css/argument_list.css' %}">
 {% endblock %}
 
 {% block content %}
-    <body class="bg-info">
-    <div class="container">
-        <h2 class="text-center">Pick an Argument</h2>
+<body class="bg-info">
+<div class="container">
+    <h2 class="text-center">Pick an Argument</h2>
 
+    <form method="post" action="{% url 'argument_list' %}">
+        {% csrf_token %}
         <div class="row bg-white">
-            <form method="post" action="{% url 'argument_list' %}">
-                {% csrf_token %}
-                {% if not arguments %}
-                    <p>There are currently no arguments. <a href="{% url 'create_argument' %}">Create one!</a></p>
-                {% else %}
-                    {% for argument in arguments %}
-                        <div class="col-md-8 table">
-                            <div class="row">
-                                <div class="col">
-                                    <h3>{{ argument.argument.argument_name }}</h3>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col table">
-                                    Topic: {{ argument.argument.topic.topic_name }}
-                                </div>
-                                <div class="col table">
-                                    Debaters: {{ argument.count }}/{{ argument.argument.max_participants }}</div>
-                                <button class="btn btn-primary col-md-2 text-center" id='id_join_{{ argument.argument.id }}'
-                                        name='join_{{ argument.argument.id }}' value={{ argument.argument.id }}>
-                                    Enter
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-md-4 table">
-                            Description: {{ argument.argument.description }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            </form>
+            {% if not arguments %}
+            <p>There are currently no arguments. <a href="{% url 'create_argument' %}">Create one!</a></p>
+            {% else %}
+            {% for argument in arguments %}
+            <div class="col-8 table">
+                <div class="row">
+                    <div class="col">
+                        <h3>{{ argument.argument.argument_name }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col table">
+                        Topic: {{ argument.argument.topic.topic_name }}
+                    </div>
+                    <div class="col table">
+                        Debaters: {{ argument.count }}/{{ argument.argument.max_participants }}
+                    </div>
+                    <button class="btn btn-primary col-md-2 text-center" id='id_join_{{ argument.argument.id }}'
+                            name='join_{{ argument.argument.id }}' value={{ argument.argument.id }}>
+                        Enter
+                    </button>
+                </div>
+            </div>
+            <div class="col-4 table">
+                Description: {{ argument.argument.description }}
+            </div>
+            {% endfor %}
+            {% endif %}
         </div>
-    </div> <!-- /container -->
-    </body>
+    </form>
+</div>
+</body>
 {% endblock content %}

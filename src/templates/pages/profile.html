@@ -60,9 +60,9 @@
                         <td> {{ arg.last_updated }}</td>
                         <td class="green"> {{ arg.status.status_name }}</td>
                         <td>
-                            <button style=" margin:auto; display:block; padding-left:20px; padding-right:20px"
-                                    class="btn light btn-primary text-center" type="submit" value="{{ arg.id }}"> Go to
-                                Lobby
+                            <button style=" margin:auto; display:block; padding-left:20px; padding-right:20px" class="btn light btn-primary text-center" type="submit"
+                                    value="{{ arg.id }}" onclick="location.href='{% url 'argument' arg.id %}'">
+                                Go to Lobby
                             </button>
                         </td>
                     </tr>

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 from argue_app.models import *
 from argue_app.forms import *
@@ -20,10 +21,7 @@ log = logging.getLogger('argue')
 
 
 @login_required(login_url='/auth/login/')
-def ChatView(request):
-    context = {'title': "Chat",
-               'user': request.user,
-               }
+def ChatLobbyView(request, chat_lobby_id=0):
     if request.method == 'POST':
         form = ChatMessageForm(request.POST)
         if form.is_valid():
@@ -31,17 +29,32 @@ def ChatView(request):
             if request.user.is_authenticated:
                 chat_message.writer = Profile.objects.get(user=request.user)
             chat_message.timestamp = datetime.datetime.now()
-            chat_message.chat_lobby = ChatLobby.objects.get(lobby_name='Global lobby')
+            chat_message.chat_lobby = ChatLobby.objects.get(id=chat_lobby_id)
             chat_message.message = form.cleaned_data.get('message')
             chat_message.save()
-            return redirect('chat')
-    if request.method == 'GET':
-        # get all messages, return them as a list
-        lobby = ChatLobby.objects.get(id=1)  # get this from the model
-        messages = ChatMessage.objects.filter(chat_lobby=lobby)
-        context["messages"] = messages
-        return render(request, 'pages/chat.html', context)
-    return render(request, 'pages/chat.html', context)
+    return redirect(request.POST['next_url'])
+
+
+@login_required(login_url='/auth/login/')
+def GlobalChatView(request):
+    chat_lobby = ChatLobby.objects.get(lobby_name='Global lobby')
+    if request.method == 'POST':
+        form = ChatMessageForm(request.POST)
+        if form.is_valid():
+            chat_message = form.save(commit=False)
+            if request.user.is_authenticated:
+                chat_message.writer = Profile.objects.get(user=request.user)
+            chat_message.timestamp = datetime.datetime.now()
+            chat_message.chat_lobby = chat_lobby
+            chat_message.message = form.cleaned_data.get('message')
+            chat_message.save()
+            redirect('global_chat')
+    context = {
+        'title': "Chat",
+        'user': request.user,
+        'chat_lobby': chat_lobby,
+    }
+    return render(request, 'pages/global_chat.html', context)
 
 
 @login_required(login_url='/auth/login/')
@@ -49,6 +62,7 @@ def ArgumentView(request, argument_id=0):
     argument = Argument.objects.get(id=argument_id)
     context = {'title': "Argument",
                'user': request.user,
+               'chat_lobby': argument.chat_lobby,
                'argument': argument,
                }
     if request.method == 'POST':
