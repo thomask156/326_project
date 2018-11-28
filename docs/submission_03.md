@@ -31,3 +31,8 @@ Currently, our forms consist of creating an account and creating a message, crea
 We were all very busy over the duration of the week before, of, and after vacation, leading to a lack of communication between team members in order to focus on individual studies and homework. Another problem included understanding how to use forms and models in tandem in order to not only create information, but retrieve it. This required understanding how to grab information specific to the currently logged-in user as well as how to have our website automatically generate relevant information for our forms.
 ### Successes
 We discussed as a group what forms were necessary for our website and were able to implement them during the Tuesday work session. This came in part from group members helping each other and previous models serving as readable examples of how one should be created. Everyone is fully aware of what our database looks like on a conceptual level and are aware of all the forms and models our website uses. Work is being done fairly quickly now and there is a fair distribution of work between team members. Everyone is content with our group and we all see us succeeding.
+
+
+## Team Choice:
+Moving forward, we want to try to have a way of viewing other people’s profiles and see their activity and achievements.  We want to try to get an achievement/trophy system in place to highlight the effort of the users.  Lastly, we want to allow users to upload custom profile pictures and save it as a field in the data model.
+
