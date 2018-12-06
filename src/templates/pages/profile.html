@@ -6,7 +6,7 @@
 
 {% block content %}
     <body>
-    <div class="container" style="margin-top:20px">
+    <div class="container" style="margin-top:45px">
         <div class="row justify-content-left align-content-center">
             <div class="col-auto">
                 <img class="user-thumbnail" src="{% static "img/profile/Thumbnail.png" %}">
@@ -14,7 +14,7 @@
             <div class="col-auto">
                 <div class="row">
                     <div class="col-auto">
-                        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                        <h2> <b> {{ user.first_name }} </b> {{ user.last_name }}</h2>
                     </div>
 
                     <div class="col-auto">
@@ -37,8 +37,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <h2> Recent Arguments </h2>
+        <div class="row" style="margin-top:20px">
+            <h3> Recent Arguments </h3>
             <button style="display:block; margin-left:20px; margin-top:5px;"
                     class="btn light addButton btn-primary" type="submit" onclick="location.href='{% url 'create_argument' %}'">
             </button>
@@ -46,11 +46,11 @@
         <div class="row argumentsList">
             <table style="margin-top:10px">
                 <thead>
-                <tr>
-                    <td>Topic Name</td>
-                    <td>Date</td>
-                    <td>Status</td>
-                    <td>View</td>
+                <tr style="background-color:#ffffff85">
+                    <th> <b> Topic Name </b> </th>
+                    <th> <b> Date </b> </th>
+                    <th> <b> Status </b> </th>
+                    <th> <b> View </b> </th>
                 <tr>
                 </thead>
                 <tbody>
@@ -71,5 +71,48 @@
             </table>
         </div>
     </div>
+
+    <div class="col-xs-4 sidebar">
+
+
+        <section>
+
+            <h1 class="sidebarHeader"> Friend Activity </h1>
+            <hr>
+
+            <div class="row">
+              <img class="sidebar-user-thumbnail" style="margin-left:25px" src="{% static "img/profile/Thumbnail.png" %}">
+              <h2 class="sidebarHeader" style="padding-left:5px"> Mark Disler </h2>
+            </div>
+            <p class="sidebarParagraph">
+                Created a new argument <i> "Was the removal of the cups a publicity stunt?" </i>
+            </p>
+
+            <hr>
+
+            <div class="row">
+              <img class="sidebar-user-thumbnail" style="margin-left:25px" src="{% static "img/profile/Thumbnail.png" %}">
+              <h2 class="sidebarHeader" style="padding-left:5px"> Thomas Katz </h2>
+            </div>
+            <p class="sidebarParagraph">
+                Created a new argument <i> "Should Travis be banned?" </i>
+            </p>
+
+            <hr>
+
+            <div class="row">
+              <img class="sidebar-user-thumbnail" style="margin-left:25px" src="{% static "img/profile/Thumbnail.png" %}">
+              <h2 class="sidebarHeader" style="padding-left:5px"> Preston Sheppard </h2>
+            </div>
+            <p class="sidebarParagraph">
+                Created a new argument <i> "What color is my dog?" </i>
+            </p>
+
+            <hr>
+
+        </section>
+
+    </div> <!--./col-->
+
     </body>
 {% endblock content %}

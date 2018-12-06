@@ -21,17 +21,75 @@ table {
       color: #029900;
     }
   }
+
+  th {
+    padding: 15px;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  th:first-child {
+    border-radius: 12px 0 0 0;
+  }
+
+  th:last-child {
+    border-radius: 0 12px 0 0;
+  }
 }
 
+.sidebar{
+    background-color: #ffffff95;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    float: right;
+    width: 300px;
+}
 
+h1.sidebarHeader {
+  font-weight: bold;
+  font-size: 24px;
+  padding-top: 12px;
+  padding-left: 12px;
+  color:black;
+}
+
+h2 {
+    font-size: 42px;
+}
+
+h2.sidebarHeader {
+    font-size: 20px;
+    color:black;
+    text-shadow: 0px 0px grey;
+}
+
+h3 {
+  font-size: 30px;
+  font-weight: normal;
+  color: white;
+}
+
+h6 {
+  font-size: 18px;
+}
 
 /* Paragraphs */
 
 p {
   color: white;
   font-size: 36px;
-  line-height: 150%;
   text-align: center;
+}
+
+p.sidebarParagraph {
+  font-size: 18px;
+  color:#333333;
+  text-align: left;
+  letter-spacing: 0.5px;
+  padding-left:10px;
+  padding-right:10px;
 }
 
 a.titleLink {
@@ -55,6 +113,11 @@ img.nav {
 img.user-thumbnail {
   height: 100px;
   width: 100px;
+}
+
+img.sidebar-user-thumbnail {
+    height: 28px;
+    width: 28px;
 }
 
 button.editButton {
