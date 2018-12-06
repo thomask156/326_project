@@ -11,7 +11,7 @@
 
     <form method="post" action="{% url 'argument_list' %}">
         {% csrf_token %}
-        <div class="row bg-white">
+        <div class="row">
             {% if not arguments %}
             <p>There are currently no arguments. <a href="{% url 'create_argument' %}">Create one!</a></p>
             {% else %}
@@ -23,10 +23,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col table">
+                    <div class="col">
                         Topic: {{ argument.argument.topic.topic_name }}
                     </div>
-                    <div class="col table">
+                    <div class="col">
                         Debaters: {{ argument.count }}/{{ argument.argument.max_participants }}
                     </div>
                     <button class="btn btn-primary col-md-2 text-center" id='id_join_{{ argument.argument.id }}'
