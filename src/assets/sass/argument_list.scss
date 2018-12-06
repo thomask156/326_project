@@ -1,13 +1,38 @@
 .table {
-  border: 1px solid rgba(180, 180, 180, .9);
-  font-variant: normal;
-  text-transform: none;
-  border-radius: 2px;
-  margin: 0;
+  width: 80%;
+  background-color: #ffffff85;
+  border-collapse: collapse;
+  border-radius: 12px;
+  border-style: hidden;
+  box-shadow: 0 0 0 1px #444;
+
+  td {
+    padding: 15px;
+    border: 1px solid black;
+    border-collapse: collapse;
+
+    &.red {
+      color: #FF0000;
+    }
+    &.yellow {
+      color: #F8E71C;
+    }
+    &.green {
+      color: #029900;
+    }
+  }
+}
+
+p {
+  color: white;
+  font-size: 36px;
+  line-height: 150%;
+  text-align: center;
+
 }
 
 .col {
-  padding: 10px;
+  padding: 5px;
 }
 
 .col-md-4 {
