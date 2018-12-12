@@ -29,17 +29,20 @@
   box-shadow: 0 3px #ccc;
   border-radius: 10px; }
 
-.chatlogs {
-  padding: 10px;
-  width: 100%;
-  height: 450px;
-  overflow-x: hidden;
-  overflow-y: scroll .chatlogs; }
-  .chatlogs ::-webkit-scrollbar {
-    width: 10px; }
-  .chatlogs::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background: rgba(0, 0, 0, 0.1); }
+  .chatlogs {
+   padding: 10px;
+   width: 100%;
+   height: 450px;
+   overflow-x: hidden;
+   overflow-y: scroll
+    &::-webkit-scrollbar {
+     width: 10px;
+   }
+    &::-webkit-scrollbar-thumb {
+     border-radius: 5px;
+     background: rgba(0, 0, 0, .1)
+   }
+ }
 
 .chat-form {
   margin-top: 20px;
