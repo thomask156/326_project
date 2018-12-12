@@ -60,6 +60,7 @@ class Argument(models.Model):
     description = models.CharField(max_length=400, default="")
     max_participants = models.IntegerField()
     participants = models.ManyToManyField(Profile)
+    forfeited = models.ManyToManyField(Profile, related_name="forfeited")
     creator = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, related_name="creator")
     chat_lobby = models.ForeignKey(ChatLobby, on_delete=models.PROTECT)
 

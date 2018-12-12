@@ -1,14 +1,30 @@
+@import "mixins";
+
 .message {
   border: 2px solid #dedede;
   background-color: #f1f1f1;
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
-  overflow-wrap: break-word; }
-  .message::after {
-    content: "";
-    clear: both;
-    display: table; }
+  overflow-wrap: break-word;
+}
+
+.forfeit {
+  background-color: $theRed;
+  border-color: $theRed;
+  .row {
+    .col {
+      .writer-left {
+        color: white;
+      }
+    }
+  }
+}
+
+.message::after {
+  content: "";
+  clear: both;
+  display: table; }
 
 .writer-left {
   float: left;
@@ -22,7 +38,6 @@
 .chatbox {
   width: 80%; /*500px; */
   min-width: 390px;
-  height: 600px;
   background: #ffffff85;
   padding: 25px;
   margin: 20px auto;
@@ -34,7 +49,7 @@
    width: 100%;
    height: 450px;
    overflow-x: hidden;
-   overflow-y: scroll
+   overflow-y: scroll;
     &::-webkit-scrollbar {
      width: 10px;
    }

@@ -138,9 +138,10 @@ $ python manage.py createsuperuser
 ##### Contributing
 ```sh
 Run the django site:
-source .venv/bin/activate
-cd src
-python3 manage.py runserver 0.0.0.0:8000
+$ source .venv/bin/activate
+$ cd src
+$ python3 manage.py runserver 0.0.0.0:8000
+visit the site at http://127.0.0.1:8000/auth/login/?next=/argue/profile
 
 Documentation is written with [Sphinx](http://www.sphinx-doc.org/en/stable/). 
 The .rst files are located in the `sphinx` folder.

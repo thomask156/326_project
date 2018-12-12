@@ -66,21 +66,36 @@ def ArgumentView(request, argument_id=0):
                'argument': argument,
                }
     if request.method == 'POST':
-        form = ChatMessageForm(request.POST)
-        if form.is_valid():
-            chat_message = form.save(commit=False)
-            if request.user.is_authenticated:
-                chat_message.writer = Profile.objects.get(user=request.user)
-            chat_message.timestamp = datetime.datetime.now()
-            chat_message.chat_lobby = argument.chat_lobby
-            chat_message.message = form.cleaned_data.get('message')
-            chat_message.save()
+        if 'forfeit' in request.POST:
+            argument.forfeited.add(Profile.objects.get(user=request.user))
+            argument.save()
             return redirect('argument', argument_id=argument_id)
+        else:
+            form = ChatMessageForm(request.POST)
+            if form.is_valid():
+                chat_message = form.save(commit=False)
+                if request.user.is_authenticated:
+                    chat_message.writer = Profile.objects.get(user=request.user)
+                chat_message.timestamp = datetime.datetime.now()
+                chat_message.chat_lobby = argument.chat_lobby
+                chat_message.message = form.cleaned_data.get('message')
+                chat_message.save()
+                return redirect('argument', argument_id=argument_id)
     if request.method == 'GET':
-        # get all messages, return them as a list
-        messages = ChatMessage.objects.filter(chat_lobby=argument.chat_lobby)
-        context["messages"] = messages
-        return render(request, 'pages/argument.html', context)
+        if Profile.objects.get(user=request.user) in argument.participants.all():
+            # get all messages, return them as a list
+            messages = ChatMessage.objects.filter(chat_lobby=argument.chat_lobby)
+            context["messages"] = messages
+            return render(request, 'pages/argument.html', context)
+        elif argument.participants.count() < argument.max_participants:
+            argument.participants.add(Profile.objects.get(user=request.user))
+            argument.save()
+            # get all messages, return them as a list
+            messages = ChatMessage.objects.filter(chat_lobby=argument.chat_lobby)
+            context["messages"] = messages
+            return render(request, 'pages/argument.html', context)
+        else:
+            return redirect('argument_list')
     return render(request, 'pages/argument.html', context)
 
 
@@ -104,7 +119,7 @@ def SignUpView(request):
 def ProfileView(request):
     profile = Profile.objects.get(user=request.user)
     my_args = profile.argument_set.all().order_by('-last_updated')
-    global_args =  Argument.objects.all().order_by('-last_updated')[:20]
+    global_args = Argument.objects.all().order_by('-last_updated')[:20]
 
     context = {'title': "Profile",
                'user': request.user,
