@@ -19,7 +19,29 @@ Travis Bender, Mark Disler, Thomas Katz, Preston Sheppard, Seth Tinglof
 
 
 ## User Interface
+The first view that our users will see when accessing our site is the login page
+![alt text](https://github.com/thomask156/326_project/blob/master/docs/imgs/final%20page%20screenshots/login.png "Login Screen")
+This is the page that allows new users to sign up and old users to login.
 
+After logging in, users will be greeted with their profile page.
+![alt text](https://github.com/thomask156/326_project/blob/master/docs/imgs/final%20page%20screenshots/profile_screen.png "Profile Screen")
+The profile screen has a list of all the recent arguments that this user has created, and it has links to quickly access these arguments.There is also a button to edit the profile, and the sidebar displays all recent arguments.
+
+Next we get onto the edit profile page.
+![alt text](https://github.com/thomask156/326_project/blob/master/docs/imgs/final%20page%20screenshots/edit_profile.png "Edit Profile Screen")
+This is the page that you see if you click the pencil icon to the right of your name on the profile screen. Here you can edit your first and last names or your bio. By default, your first name will be anonymous, and your last name will be some random animal, but you can change these if you do not wish to be aonymous during your arguments.
+
+Next, we will look at creating an argument on the start argument page.
+![alt text](https://github.com/thomask156/326_project/blob/master/docs/imgs/final%20page%20screenshots/create_argument.png "Start Argument Screen")
+This page is fairly self explanitory. You can write an argument name and description in the appropriate fields. Then, you can select your topic and argument size from the dropdowns. Finally, hit start argument to create your argument.
+
+Once an argument is created, it is visible in the join argument page.
+![alt text](https://github.com/thomask156/326_project/blob/master/docs/imgs/final%20page%20screenshots/join_argument.png "Join Argument Screen")
+On this screen, every argument that has been created is displayed, and you can click join on any of these arguments to enter that arguments chat.
+
+Finally, the chat is where the arguments actually happen.
+![alt text](https://github.com/thomask156/326_project/blob/master/docs/imgs/final%20page%20screenshots/chat.png "Chat Screen")
+There is a global chat that you can access by clicking on "Chat" in the navbar, and every argument has a chat that you access by joining that argument. On this page, simply write a message and click submit to let everyone know what your opinions are. Every chat message includes the username of its poster and a timestamp for its creation.
 
 
 ## Data Model
