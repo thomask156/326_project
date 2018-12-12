@@ -24,7 +24,7 @@ Travis Bender, Mark Disler, Thomas Katz, Preston Sheppard, Seth Tinglof
 
 ## Data Model
 
-![Data Model Below](C:\Users\Thomas\PycharmProjects\326_project\docs\data_model.png)
+![Data Model Below](https://github.com/thomask156/326_project/blob/master/docs/data_model.png)
 
 Above is our data model for our web application. Profile inherits user's attributes, which has a name, password and email field, and then profile adds on a bio and rank field. Arguments have the attributes such as their name, a description, last time it was updated, and max number of participants. It has relations to participants (profiles), the creator (profile), the chat lobby and the status and topic models. Status and topic both only have one attribute, these being their name, and arguments get these attributes from these two models. A chat message has fields for its writer,  the time it was sent, which lobby it was sent in and what the message was. Each chat message is only sent to one lobby, this being the chat lobby model. This model only has a name attribute and is used for "housing" groups of chat messages.
 
