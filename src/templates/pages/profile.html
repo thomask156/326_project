@@ -24,8 +24,8 @@
                     </div>
 
                     <div class="col-auto">
-                        <img src="{% static "img/profile/RedTrophy.png" %}">
-                        <img src="{% static "img/profile/GreenTrophy.png" %}">
+                        <img src="{% static "img/profile/RedTrophy.png" %}" title="Achievement: Creating 5 arguments">
+                        <img src="{% static "img/profile/GreenTrophy.png" %}" title="Achievement: Changing your user bio">
                     </div>
 
 
@@ -72,43 +72,31 @@
         </div>
     </div>
 
-    <div class="col-xs-4 sidebar">
+    <div class="col-xs-4 sidebar" style="overflow: scroll;">
 
 
         <section>
 
-            <h1 class="sidebarHeader"> Friend Activity </h1>
+            <h1 class="sidebarHeader"> Recent Activity </h1>
             <hr>
+
+            {% for arg in global_args %}
 
             <div class="row">
               <img class="sidebar-user-thumbnail" style="margin-left:25px" src="{% static "img/profile/Thumbnail.png" %}">
-              <h2 class="sidebarHeader" style="padding-left:5px"> Mark Disler </h2>
+              <h2 class="sidebarHeader" style="padding-left:5px"> {{ arg.creator }} </h2>
             </div>
             <p class="sidebarParagraph">
-                Created a new argument <i> "Was the removal of the cups a publicity stunt?" </i>
+                Created a new argument <i> "{{ arg.argument_name}}" </i>
             </p>
 
             <hr>
 
-            <div class="row">
-              <img class="sidebar-user-thumbnail" style="margin-left:25px" src="{% static "img/profile/Thumbnail.png" %}">
-              <h2 class="sidebarHeader" style="padding-left:5px"> Thomas Katz </h2>
-            </div>
-            <p class="sidebarParagraph">
-                Created a new argument <i> "Should Travis be banned?" </i>
-            </p>
 
-            <hr>
+            {% endfor %}
 
-            <div class="row">
-              <img class="sidebar-user-thumbnail" style="margin-left:25px" src="{% static "img/profile/Thumbnail.png" %}">
-              <h2 class="sidebarHeader" style="padding-left:5px"> Preston Sheppard </h2>
-            </div>
-            <p class="sidebarParagraph">
-                Created a new argument <i> "What color is my dog?" </i>
-            </p>
 
-            <hr>
+
 
         </section>
 

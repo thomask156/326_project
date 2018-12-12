@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block content %}
-<body class="bg-info">
-<div class="container">
+<body class="bg-info" >
+<div class="container" >
     <h2 class="text-center">Pick an Argument</h2>
 
     <form method="post" action="{% url 'argument_list' %}">
@@ -15,30 +15,36 @@
             {% if not arguments %}
             <p>There are currently no arguments. <a href="{% url 'create_argument' %}">Create one!</a></p>
             {% else %}
-            {% for argument in arguments %}
-            <div class="col-8 table">
-                <div class="row">
-                    <div class="col">
-                        <h3>{{ argument.argument.argument_name }}</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        Topic: {{ argument.argument.topic.topic_name }}
-                    </div>
-                    <div class="col">
-                        Debaters: {{ argument.count }}/{{ argument.argument.max_participants }}
-                    </div>
-                    <button class="btn btn-primary col-md-2 text-center" id='id_join_{{ argument.argument.id }}'
-                            name='join_{{ argument.argument.id }}' value={{ argument.argument.id }}>
-                        Enter
-                    </button>
-                </div>
-            </div>
-            <div class="col-4 table">
-                Description: {{ argument.argument.description }}
-            </div>
-            {% endfor %}
+
+
+            <table style="margin-top:10px; margin-bottom:100px;">
+                <thead>
+                <tr style="background-color:#ffffff85">
+                    <th> <b> Argument Name </b> </th>
+                    <th> <b> Topic Name </b> </th>
+                    <th> <b> Debaters </b> </th>
+                    <th> <b> Description </b> </th>
+                    <th> <b> Join </b> </th>
+                <tr>
+                </thead>
+                <tbody>
+                {% for argument in arguments %}
+                    <tr>
+                        <td> {{ argument.argument.argument_name }} </td>
+                        <td> {{ argument.argument.topic.topic_name }} </td>
+                        <td> {{ argument.count }}/{{ argument.argument.max_participants }} </td>
+                        <td> {{ argument.argument.description }} </td>
+                        <td>
+                          <button class="btn btn-primary text-center" id='id_join_{{ argument.argument.id }}'
+                                  name='join_{{ argument.argument.id }}' value={{ argument.argument.id }}>
+                              Join
+                          </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
             {% endif %}
         </div>
     </form>

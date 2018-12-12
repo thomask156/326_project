@@ -10,7 +10,7 @@
 </head>
 
 <body class="bg-info bg-image">
-<div class="container">
+<div class="container" style="margin-top:45px">
     <h1>Change My Mind</h1>
     <div class="row login-box align-items-center justify-content-center">
         <div class="col-6">
@@ -28,7 +28,7 @@
                                 <strong>{{ form.username.errors|escape }}</strong>
                             </div>
                         {% endif %}
-                        <input placeholder="User name" name="username">
+                        <input class="form-control long" placeholder="User name" name="username">
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
@@ -38,7 +38,7 @@
                                 <strong>{{ form.password1.errors|escape }}</strong>
                             </div>
                         {% endif %}
-                        <input type="password" placeholder="Password" name="password1">
+                        <input class="form-control  long" type="password" placeholder="Password" name="password1">
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
@@ -48,12 +48,12 @@
                                 <strong>{{ form.password2.errors|escape }}</strong>
                             </div>
                         {% endif %}
-                        <input type="password" placeholder="Retype password" name="password2">
+                        <input class="form-control long" type="password" placeholder="Retype password" name="password2">
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-auto">
-                        <button class="btn" type="submit">Start Arguing!</button>
+                        <button class="btn login" type="submit">Start Arguing!</button>
                     </div>
                 </div>
             </form>
@@ -68,17 +68,17 @@
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-auto">
-                        <input placeholder="User name" name="username">
+                        <input class="form-control long" placeholder="User name" name="username">
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-auto">
-                        <input type="password" placeholder="Password" name="password">
+                        <input class="form-control long" type="password" placeholder="Password" name="password">
                     </div>
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-auto">
-                        <button class="btn">Continue Arguing!</button>
+                        <button class="btn login">Continue Arguing!</button>
                     </div>
                 </div>
             </form>

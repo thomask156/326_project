@@ -103,12 +103,14 @@ def SignUpView(request):
 @login_required(login_url='/auth/login/')
 def ProfileView(request):
     profile = Profile.objects.get(user=request.user)
-    my_args = profile.argument_set.all()
+    my_args = profile.argument_set.all().order_by('-last_updated')
+    global_args =  Argument.objects.all().order_by('-last_updated')[:20]
 
     context = {'title': "Profile",
                'user': request.user,
                'profile': profile,
-               'arguments': my_args
+               'arguments': my_args,
+               'global_args': global_args
                }
     return render(request, 'pages/profile.html', context)
 

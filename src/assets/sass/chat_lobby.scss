@@ -4,85 +4,69 @@
   border-radius: 5px;
   padding: 10px;
   margin: 10px 0;
-  overflow-wrap: break-word;
-
-  &::after {
+  overflow-wrap: break-word; }
+  .message::after {
     content: "";
     clear: both;
-    display: table;
-  }
-}
+    display: table; }
 
 .writer-left {
   float: left;
   font-weight: bold;
-  color: #aaa;
-}
+  color: #aaa; }
 
 .time {
   font-size: 10px;
-  color: #aaa;
-}
+  color: #aaa; }
 
 .chatbox {
-  width: 500px;
+  width: 80%; /*500px; */
   min-width: 390px;
   height: 600px;
-  background: #fff;
+  background: #ffffff85;
   padding: 25px;
   margin: 20px auto;
   box-shadow: 0 3px #ccc;
-  border-radius: 10px;
-
-}
+  border-radius: 10px; }
 
 .chatlogs {
   padding: 10px;
   width: 100%;
   height: 450px;
   overflow-x: hidden;
-  overflow-y: scroll
-
-  &::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  &::-webkit-scrollbar-thumb {
+  overflow-y: scroll .chatlogs; }
+  .chatlogs ::-webkit-scrollbar {
+    width: 10px; }
+  .chatlogs::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background: rgba(0, 0, 0, .1)
-  }
-}
+    background: rgba(0, 0, 0, 0.1); }
 
 .chat-form {
   margin-top: 20px;
-  display: flex;
-
-  textarea {
-    background: #ffffff;
+  display: flex; }
+  .chat-form textarea {
+    background: #ffffff85;
     width: 100%;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box; /* Firefox, other Gecko */
-    box-sizing: border-box; /* Opera/IE 8+ */
+    -webkit-box-sizing: border-box;
+    /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+    /* Firefox, other Gecko */
+    box-sizing: border-box;
+    /* Opera/IE 8+ */
     height: 75px;
-    border: 2px solid #000000;
-    border-radius: 3px;
+    border: 1px solid #000000;
+    border-radius: 8px;
     resize: none;
-    font-size: 18px;
-  }
-
-  button {
-    background: #1ddced;
+    font-size: 18px; }
+  .chat-form button {
     padding: 5px 15px;
     font-size: 30px;
     color: #fff;
+    height: 75px;
+    background: #5FCC5B;
     border: none;
-    border-radius: 3px;
+    border-radius: 8px;
     box-shadow: 0 3px 0 #0eb2c1;
-    cursor: pointer;
-
-    &:hover {
-      background: #12c8d9;
-    }
-  }
-}
-
+    cursor: pointer; }
+    .chat-form button:hover {
+      background: #12c8d9; }

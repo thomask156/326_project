@@ -22,7 +22,18 @@ h3 {
 
 h1 {
   color: white;
-  text-shadow: 1px 1px black;
+  text-shadow: 3px 3px black;
   font-size: 40px;
-  text-align: center;
+  text-align: center; }
+
+
+button.login {
+  color: #fff;
+  font-weight: 500;
+  background: #5FCC5B;
+  border-radius: 8px;
+}
+
+input.long {
+  width: 200px;
 }
