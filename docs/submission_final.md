@@ -30,6 +30,17 @@ Above is our data model for our web application. Profile inherits user's attribu
 
 ## URL Routes/Mappings
 
+| URL                                                          | Description                                |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| url(r'^create_argument/', ArgumentCreateView,name='create_argument') | Used for creating argument                 |
+| url(r'^argument_list/', ArgumentListView, name='argument_list') | Used for seeing all ongoing arguments      |
+| url(r'^profile', ProfileView, name='profile')                | Used for reaching profile of specific user |
+| path('chat/<int:chat_lobby_id>/', ChatLobbyView, name='chat_lobby') | Used for reaching specific chat lobby      |
+| url(r'^global_chat/', GlobalChatView, name='global_chat')    | Used for reaching global chat page         |
+| path('argument/<int:argument_id>/', ArgumentView, name='argument') | Used for going to specific argument        |
+| url(r'^edit_profile/', EditProfileView, name='edit_profile') | Used for editing user's own profile        |
+All routes above have the @login_required decorator, which means they cannot be accessed unless a user is logged in. The only page accessible by non-authenticated users is /auth/login/, which is where the user can create an account login with an existing one.
+
 
 
 ## Authentication/Authorization
